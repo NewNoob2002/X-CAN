@@ -1,0 +1,2 @@
+# Match only X-CAN. Run before 73-seat-late.rules for uaccess.
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="c0ca", ATTR{idProduct}=="0313", GROUP="plugdev", MODE="0660", TAG+="uaccess"

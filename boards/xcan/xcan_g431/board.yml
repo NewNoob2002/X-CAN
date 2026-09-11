@@ -1,0 +1,6 @@
+board:
+  name: xcan_g431
+  full_name: X-CAN STM32G431RB
+  vendor: others
+  socs:
+    - name: stm32g431xx

@@ -1,0 +1,6 @@
+X-CAN bringup sysclk=144000000 idcode=20036468 optr=fbeff8aa SAFE
+USB init=-134 vid=c0ca pid=0313
+r0/a1:  0x00000004  r1/a2:  0x0800cd63  r2/a3:  0x00000000
+r3/a4:  0x00000004 r12/ip:  0x0000000f r14/lr:  0x08000587
+ xpsr:  0x21000000
+Faulting instruction address (r15/pc): 0x08000598

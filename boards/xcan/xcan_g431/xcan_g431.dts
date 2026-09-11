@@ -1,0 +1,51 @@
+/dts-v1/;
+#include <st/g4/stm32g431Xb.dtsi>
+#include <st/g4/stm32g431r(6-8-b)tx-pinctrl.dtsi>
+
+/ {
+    model = "X-CAN STM32G431RB";
+    compatible = "xcan,stm32g431rb";
+    chosen {
+        zephyr,console = &usart1;
+        zephyr,sram = &sram0;
+        zephyr,flash = &flash0;
+    };
+    leds {
+        compatible = "gpio-leds";
+        status_led: status { gpios = <&gpiob 0 GPIO_ACTIVE_LOW>; };
+    };
+    zephyr,user {
+        stb-gpios = <&gpioc 4 GPIO_ACTIVE_HIGH>;
+        arm-gpios = <&gpioc 5 GPIO_ACTIVE_HIGH>;
+        injection-gpios = <&gpioa 1 GPIO_ACTIVE_HIGH>;
+        can-tx-gpios = <&gpiob 9 GPIO_ACTIVE_HIGH>;
+        termination-gpios = <&gpiob 2 GPIO_ACTIVE_HIGH>;
+    };
+    aliases { led0 = &status_led; };
+};
+
+/* Real board: 12 MHz; schematic PDF still says 8 MHz. */
+&clk_hse { clock-frequency = <DT_FREQ_M(12)>; status = "okay"; };
+&pll {
+    div-m = <3>;
+    mul-n = <72>;
+    div-p = <2>;
+    div-q = <6>;
+    div-r = <2>;
+    clocks = <&clk_hse>;
+    status = "okay";
+};
+&rcc {
+    clocks = <&pll>;
+    clock-frequency = <DT_FREQ_M(144)>;
+    ahb-prescaler = <1>;
+    apb1-prescaler = <1>;
+    apb2-prescaler = <1>;
+};
+&usart1 {
+    pinctrl-0 = <&usart1_tx_pa9 &usart1_rx_pa10>;
+    pinctrl-names = "default";
+    current-speed = <115200>;
+    status = "okay";
+};
+/* No CAN controller or injection timer is enabled during bring-up. */

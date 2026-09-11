@@ -1,0 +1,3 @@
+config BOARD_XCAN_G431
+    select SOC_STM32G431XX
+    select SOC_EARLY_RESET_HOOK

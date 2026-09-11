@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.20.0)
+list(APPEND BOARD_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/..)
+find_package(Zephyr 4.4.0 EXACT REQUIRED HINTS $ENV{ZEPHYR_BASE})
+project(xcan)
+target_sources(app PRIVATE src/main.c)
+target_sources_ifdef(CONFIG_XCAN_USB app PRIVATE src/usb.c src/protocol.c)

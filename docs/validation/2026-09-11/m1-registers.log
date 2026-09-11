@@ -1,0 +1,91 @@
+SEGGER J-Link Commander V9.70 (Compiled Aug 19 2026 12:16:13)
+DLL version V9.70, compiled Aug 19 2026 12:15:25
+
+J-Link Commander will now exit on Error
+
+J-Link Command File read successfully.
+Processing script file...
+J-Link>connect
+J-Link connection not established yet but required for command.
+Connecting to J-Link ...O.K.
+Firmware: J-Link V9 compiled May  7 2021 16:26:12
+Hardware version: V9.70
+J-Link uptime (since boot): N/A (Not supported by this model)
+S/N: 63728769
+License(s): RDI,FlashBP,FlashDL,JFlash,GDB
+VTref=3.414V
+Device "STM32G431RB" selected.
+
+
+Connecting to target via SWD
+InitTarget() start
+SWD selected. Executing JTAG -> SWD switching sequence.
+DAP initialized successfully.
+InitTarget() end - Took 9.50ms
+Found SW-DP with ID 0x2BA01477
+DPIDR: 0x2BA01477
+CoreSight SoC-400 or earlier
+Scanning AP map to find all available APs
+AP[1]: Stopped AP scan as end of AP map has been reached
+AP[0]: AHB-AP (IDR: 0x24770011, ADDR: 0x00000000)
+Iterating through AP map to find AHB-AP to use
+AP[0]: Core found
+AP[0]: AHB-AP ROM base: 0xE00FF000
+CPUID register: 0x410FC241. Implementer code: 0x41 (ARM)
+Found Cortex-M4 r0p1, Little endian.
+FPUnit: 6 code (BP) slots and 2 literal slots
+CoreSight components:
+ROMTbl[0] @ E00FF000
+[0][0]: E000E000 CID B105E00D PID 000BB00C SCS-M7
+[0][1]: E0001000 CID B105E00D PID 003BB002 DWT
+[0][2]: E0002000 CID B105E00D PID 002BB003 FPB
+[0][3]: E0000000 CID B105E00D PID 003BB001 ITM
+[0][4]: E0040000 CID B105900D PID 000BB9A1 TPIU
+[0][5]: E0041000 CID B105900D PID 000BB925 ETM
+Memory zones:
+  Zone: "Default" Description: Default access mode
+Cortex-M4 identified.
+J-Link>h
+PC = 08009604, CycleCnt = 005345C9
+R0 = 20000DB4, R1 = 00000000, R2 = 00000000, R3 = 00000000
+R4 = 00000010, R5 = 08005F89, R6 = 20000DB4, R7 = 00000000
+R8 = 00000000, R9 = 00000008, R10= 00000000, R11= 00000000
+R12= E4735817
+SP(R13)= 200020A0, MSP= 20001F40, PSP= 200020A0, R14(LR) = 08005FA9
+XPSR = 61000000: APSR = nZCvq, EPSR = 01000000, IPSR = 000 (NoException)
+CFBP = 02000001, CONTROL = 02, FAULTMASK = 00, BASEPRI = 00, PRIMASK = 01
+
+FPS0 = 00000000, FPS1 = 00000000, FPS2 = 00000000, FPS3 = 00000000
+FPS4 = 00000000, FPS5 = 00000000, FPS6 = 00000000, FPS7 = 00000000
+FPS8 = 00000000, FPS9 = 00000000, FPS10= 00000000, FPS11= 00000000
+FPS12= 00000000, FPS13= 00000000, FPS14= 00000000, FPS15= 00000000
+FPS16= 00000000, FPS17= 00000000, FPS18= 00000000, FPS19= 00000000
+FPS20= 00000000, FPS21= 00000000, FPS22= 00000000, FPS23= 00000000
+FPS24= 00000000, FPS25= 00000000, FPS26= 00000000, FPS27= 00000000
+FPS28= 00000000, FPS29= 00000000, FPS30= 00000000, FPS31= 00000000
+FPSCR= 00000000
+J-Link>mem32 0x40021000 4
+40021000 = 03030500 408E0000 0000000F 11514823 
+J-Link>mem32 0x4002104C 1
+4002104C = 0000007F 
+J-Link>mem32 0x40021088 1
+40021088 = 08000000 
+J-Link>mem32 0x48000000 6
+48000000 = ABEBFFF7 00000000 0C000000 64040000 
+48000010 = 0000C200 00000000 
+J-Link>mem32 0x48000400 6
+48000400 = FFF7FE8D 00000000 000000C0 00000100 
+48000410 = 00000211 00000201 
+J-Link>mem32 0x48000800 6
+48000800 = FFFFF5FF 00000000 00000000 00000000 
+48000810 = 00000010 00000010 
+J-Link>mem32 0x40022020 1
+40022020 = FBEFF8AA 
+J-Link>g
+Memory map 'after startup completion point' is active
+J-Link>exit
+
+Script processing completed.
+
+OnDisconnectTarget() start
+OnDisconnectTarget() end - Took 1.09ms

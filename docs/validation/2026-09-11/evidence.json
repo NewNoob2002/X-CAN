@@ -1,0 +1,53 @@
+{
+  "date": "2026-09-11",
+  "probe_serial": "63728769",
+  "nrst_connected": true,
+  "uart_tx_port": "/dev/ttyUSB0",
+  "uart_baud": null,
+  "hse_hz_user_confirmed": 12000000,
+  "schematic_hse_hz_outdated": 8000000,
+  "sysclk_hz_calculated": 170000000,
+  "clock_provenance": "用户确认实装12MHz；系统频率按实读PLL M=3/N=85/R=2计算，未做频率测量",
+  "can_disconnected_from_working_bus_user_confirmed": true,
+  "scope_validation": {
+    "status": "deferred_by_user",
+    "reason": "用户要求示波器相关测试先跳过，等待示波器可用再测",
+    "pending": ["电源纹波及上掉电瞬态", "NRST释放波形", "ARM/注入/TXD瞬态", "时钟频率与脉冲时序"],
+    "next_work": "先推进Zephyr基础固件、USART1日志、PB2声明输入及Vendor USB/Rust验证；波形项不记为通过，注入验收保留实测要求"
+  },
+  "measurements": {
+    "source": "用户 UT33B+ 直流测量",
+    "supply_3v3_v": 3.31,
+    "supply_5v_v": 5.14,
+    "termination_resistance": {
+      "source": "用户回复断电终端测量步骤",
+      "switch_on_ohm": 120,
+      "switch_off_raw_reply": "固定表笔复测：拨码断开为0L，接入为120欧姆",
+      "switch_off_ohm": null,
+      "switch_off_display": "OL（用户记作0L），超量程；不赋值为零或精确无穷大",
+      "meter_check": {"leads_open": "0L", "leads_shorted": "0"},
+      "history": "此前曾报告断开0.0欧姆；本次表笔悬空/短接对照及固定测点复测后更正为OL",
+      "status": "终端接入/断开静态阻值检查通过；此前疑似低阻异常已关闭，PB2声明拨码逻辑仍待验证"
+    },
+    "static_control_levels": {
+      "conditions": "现有 LED 固件，上电，CAN 端子脱离工作总线；用户报告近似直流值",
+      "pc4_stb": "接近 3.3 V",
+      "pc5_arm": "接近 0 V",
+      "pa1_injection": "接近 0 V",
+      "u2_txd": "接近 3.3 V",
+      "result": "四项均符合原理图预期默认电平；未验证上电瞬态或动态脉冲"
+    }
+  },
+  "idcode": "0x20036468",
+  "dev_id": "0x468",
+  "rev_id": "0x2003",
+  "silicon_revision": "X",
+  "dhcsr_before": "0x01010001",
+  "dhcsr_after": "0x01010001",
+  "halted_before": false,
+  "halted_after": false,
+  "commands": "read-only mem32; no explicit halt/reset/write/flash/CAN TX",
+  "gpio_c": "clock disabled; returned FFFFFFFF is not valid pin-level evidence",
+  "snapshot_atomic": false,
+  "previous_timeout": "用户随后确认接口接错；重新接线并自行 JLinkExe 验证后授权继续，本次成功"
+}

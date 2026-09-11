@@ -1,0 +1,14 @@
+{
+  "approved": true,
+  "authorization": "用户要求依次实施基础固件、串口/PB2、Vendor USB/Rust；已确认连接目标与供电，CAN断开",
+  "target": "X-CAN STM32G431RB rev X, J-Link63728769",
+  "artifact": "build/usb/zephyr/zephyr.bin",
+  "sha256": "addfc52f8a5d31f8388388b55c7246314b5a5f5295eb8700f4b6ef53fb588390",
+  "previous_image": "3d190fc7c7ad60d18e1d2d14ade8b7d7993f0bc1ffc1c0677ec251254469ae7a; init returned -ENOTSUP due to missing mandatory class init callback; fixed in current image",
+  "range": "bin linked at 0x08000000, 61744 bytes; Flash pages covering image only",
+  "operations": "loadfile, verifybin, reset/run; bounded halt/read RCC/GPIO/OPTR then resume for diagnosis; UART receive; USB descriptor/info and bounded echo tests",
+  "limits": "No option-byte writes, no mass erase, no CAN TX/injection; USB protocol contains no CAN or actuator commands; 2-second transaction timeout, no retries",
+  "usb": "VID C0CA PID0313; user typed COCA, normalized O to hex digit0 and notified",
+  "backup": "build/bringup/previous-flash.bin (128KiB), SHA256 580d48a9232b60103e3e6c0dd6ccc905483cbff5838313ac4ce95b4669234183",
+  "recovery": "bringup verified image or original Flash backup available; preserve FLASH_OPTR FBEFF8AA"
+}

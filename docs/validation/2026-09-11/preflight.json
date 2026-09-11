@@ -1,0 +1,32 @@
+{
+  "safety_preflight": {
+    "schema_version": 1,
+    "timestamp_utc": "2026-09-11T03:48:49.448620+00:00",
+    "operation": "debug-halt",
+    "authorization": "用户要求核对实际芯片修订号、驱动实现及样板测量，并已提供上电电压读数。",
+    "target": {
+      "board": "X-CAN STM32G431RBT6",
+      "hardware_revision": "schematic V1.0; silicon revision X confirmed by IDCODE 0x20036468",
+      "probe_or_adapter_serial": "63728769",
+      "transport": "swd"
+    },
+    "artifact_or_stimulus": "Normal SWD attach, read DBGMCU_IDCODE and DHCSR; if running, bounded halt/read read-only RCC/GPIO/FLASH_OPTR then restore running. No firmware programming.",
+    "limits": "No intentional reset, flash, option-byte write, GPIO write, CAN transmission or instrument output changes. User subsequently corrected connector and connected NRST, verified JLinkExe and explicitly authorized another read. Successful final inspection used only mem32, without halt. Stop after connection failure until new evidence supports retry.",
+    "recovery_plan": "Preserve original run/halt state where observable; resume in finally after agent-induced halt. Record any tool-internal fallback/reset attempts.",
+    "approved": true
+  },
+  "user_measurements": {
+    "instrument": "UT33B+",
+    "supply_3v3_v": 3.31,
+    "supply_5v_v": 5.14,
+    "provenance": "User-reported DC readings; not automated acquisition",
+    "nrst_connected": true,
+    "uart_tx_port": "/dev/ttyUSB0",
+    "scope": "正点原子 DS100, no test points connected yet"
+  },
+  "earlier_connection": {
+    "status": "DAP initialization failed before user reported Type-C power omission",
+    "probe_vtref_v": 3.404,
+    "note": "probe_command ShowEmuList unexpectedly auto-attached and internally attempted connect-under-reset/reset fallback; no chip registers read. Agent stopped retries."
+  }
+}

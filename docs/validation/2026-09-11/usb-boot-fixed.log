@@ -1,0 +1,21 @@
+X-CAN bringup sysclk=144000000 idcode=20036468 optr=fbeff8aa SAFE
+USB init=0 vid=c0ca pid=0313
+alive ms=8 termination_declared=-1 SAFE
+termination_declared=1 (manual switch)
+alive ms=1015 termination_declared=1 SAFE
+alive ms=2018 termination_declared=1 SAFE
+alive ms=3022 termination_declared=1 SAFE
+alive ms=4025 termination_declared=1 SAFE
+alive ms=5029 termination_declared=1 SAFE
+alive ms=6032 termination_declared=1 SAFE
+alive ms=7036 termination_declared=1 SAFE
+alive ms=8039 termination_declared=1 SAFE
+alive ms=9043 termination_declared=1 SAFE
+alive ms=10046 termination_declared=1 SAFE
+alive ms=11050 termination_declared=1 SAFE
+alive ms=12053 termination_declared=1 SAFE
+alive ms=13057 termination_declared=1 SAFE
+alive ms=14060 termination_declared=1 SAFE
+alive ms=15064 termination_declared=1 SAFE
+alive ms=16067 termination_declared=1 SAFE
+alive ms=17071 termination_declared=1 SAFE

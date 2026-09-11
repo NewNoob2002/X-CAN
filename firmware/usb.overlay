@@ -1,0 +1,5 @@
+zephyr_udc0: &usb {
+    clocks = <&rcc STM32_CLOCK(APB1, 23)>,
+             <&rcc STM32_SRC_PLL_Q CLK48_SEL(2)>;
+    status = "okay";
+};

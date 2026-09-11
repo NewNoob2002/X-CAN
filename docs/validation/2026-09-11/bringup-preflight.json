@@ -1,0 +1,16 @@
+{
+  "operation": "backup, program and verify minimal Zephyr bringup firmware",
+  "authorization": "用户要求按顺序执行基础固件工作，已回复接好供电/J-Link/NRST/串口；已告知先备份再烧录，启动选项不变",
+  "approved": true,
+  "board": "X-CAN STM32G431RBT6 revision X",
+  "probe_serial": "63728769",
+  "power": "Type-C; prior DMM 3.31V / 5.14V; user reconnected",
+  "can": "disconnected; no CAN driver or injection timer in this firmware",
+  "artifact": "build/bringup/zephyr/zephyr.bin",
+  "sha256": "8b481d035a007dff65e3b148ca78ce0e6dcf32d46476108ce26a935cdc99dea9",
+  "flash_address": "0x08000000; verified linked Flash origin",
+  "backup_range": "0x08000000..0x0801FFFF (128 KiB)",
+  "limits": "No option-byte/protection changes, no mass erase, no CAN TX or injection. Program only artifact-covered Flash pages, verifybin, reset and run. Stop on failed backup/identity/verification",
+  "recovery": "Keep full prior Flash backup and OPTR readout; restore prior firmware if new image fails and connection remains usable",
+  "serial": "ttyUSB0 CH340 VID1A86 PID7523 location1-1.1; 115200 8N1, bounded receive only; no UART TX; no wired DTR/RTS controls"
+}
