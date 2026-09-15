@@ -1,0 +1,13 @@
+connect
+h
+ClrBP 1
+SetBP 0x080004da
+g
+sleep 30
+h
+mem32 0x48000000 7
+mem32 0x48000400 7
+mem32 0x48000800 7
+ClrBP 1
+g
+exit

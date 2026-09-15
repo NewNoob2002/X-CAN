@@ -1,0 +1,7 @@
+connect
+h
+loadfile /home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/Release/xcan.bin 0x08000000
+verifybin /home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/Release/xcan.bin 0x08000000
+r
+g
+exit

@@ -1,0 +1,32 @@
+{
+  "build": "/home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/system/usb",
+  "checks": "startup hook first, no stores in hook, Flash vectors, no CAN",
+  "artifacts": {
+    "zephyr.elf": {
+      "bytes": 1286668,
+      "sha256": "b0fdf7450222e28ac131a2bcbc39bcb6716bc86492a39740a7b802097059aeed"
+    },
+    "zephyr.bin": {
+      "bytes": 67156,
+      "sha256": "5a98344202229cd25b2704af109ff3882173351994c8c3646d476fc919dabc7f"
+    },
+    "zephyr.hex": {
+      "bytes": 189058,
+      "sha256": "2632511e28439224debcb5e8e0a8bab5723f5ab800dcbff4ee55da3548b95c7a"
+    },
+    "zephyr.map": {
+      "bytes": 474692,
+      "sha256": "ce687b6e1f28a833130da17ce6aa108a403cbb572d2f573d2cc7aece77b5ba61"
+    },
+    ".config": {
+      "bytes": 38591,
+      "sha256": "99722a1aca9662d795b62fd9aaf876e15869c976693061b6c05c0a43736ba7d1"
+    },
+    "zephyr.dts": {
+      "bytes": 73572,
+      "sha256": "32b39461d80d3e100e4e3926911fc9f7f36586a9c2702acb60f2fe7390cbcf3c"
+    }
+  },
+  "initial_sp": "0x20002900",
+  "reset_vector": "0x800154d"
+}

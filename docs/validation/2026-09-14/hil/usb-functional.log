@@ -1,0 +1,3 @@
+c0ca:0313 serial=2036365058315010002D0055
+clock_hz=144000000 idcode=20036468 uptime_ms=42387 termination_declared=0 safe=1
+PASS: 106 echoes (0..52 bytes, whole/split writes), malformed length rejected

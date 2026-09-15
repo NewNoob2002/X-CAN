@@ -1,67 +1,61 @@
 # X-CAN
 
-STM32G431RBT6 CAN/CAN-FD分析仪，计划支持定时显性脉冲注入。实装晶振12MHz（PDF仍标8MHz）。当前实现为板级启动、串口、终端人工声明和Vendor USB验证固件；CAN与注入尚未启用。
+STM32G431RBT6 单通道 CAN/CAN-FD 分析仪，目标支持定时显性脉冲注入、错误与恢复观察，以及 Linux/Windows Rust 上位机。
 
-## 当前固件
+当前主线为 **STM32 HAL + FreeRTOS + CherryUSB**。已在重新生成的 CubeMX 工程上恢复集成，基础 Linux HIL 已覆盖启动、安全 GPIO、双时基、PB2 和 Vendor USB。MCUboot 双槽、App USB 升级状态机及 Rust 512 字节分块命令已通过实机升级、确认和回滚验证；中途断电恢复、CAN 和注入仍待验收。
 
-- Zephyr v4.4.0，独立板型xcan_g431，直接从0x08000000启动。不修改选项字节；实机OPTR保持0xFBEFF8AA。
-- ES0431 SRAM首次写入规避在最早期汇编hook中执行。当前支持已验证的parity disabled配置；检测到parity开启则停在具名汇编位置，不自动改选项字节。
-- HSE12MHz / M3 × N72，CPU144MHz、USB PLLQ /6 =48MHz；未做频率波形测量。
-- PC5/ARM低、PC4/STB高、PA1注入低、PB9/TX高；LED_STATUS/PB0每秒翻转。
-- USART1 PA9/TX、PA10/RX，115200 8N1；日志只需TX接串口RX及共地。
-- PB2外部下拉，10ms采样，连续4次相同后更新声明；不自动检测120Ω。
-- USB C0CA:0313，单Vendor接口、Bulk IN/OUT、芯片UID序列号、MS OS 2.0 WinUSB描述符，无remote wakeup。
+## 构建与本地测试
 
-## 构建固件
+依赖已安装的 GNU Arm/CubeCLT、CMake、Ninja；协议测试还需本机 C 编译器、Python 3 和 Rust。HAL/CMSIS 和必要中间件源码均在仓库内，默认构建不依赖 Zephyr 或其他项目目录，也不下载库。
 
-依赖由west.yml固定。本机.deps为独立的锁定提交检出，不修改原Zephyr工作目录：
+    python3 tools/build.py
+    python3 tools/build.py --preset Debug
+    python3 tools/test.py
 
-| 目录 | 提交 |
+Release 输出 build/Release/xcan.{elf,bin,hex,map}、xcan_boot 和 xcan.signed.bin。当前 App Flash 34,852 B、签名镜像 35,514 B、RAM 预留 11,480 B；48 KiB 签名镜像区尚余 13,638 B。Debug 输出 build/Debug/。build.py 自动检查启动 hook、应用入口、向量、签名与 IRQ 归属；不执行烧录。
+
+## 工作区
+
+| 目录 | 用途 |
 |---|---|
-| .deps/zephyr | 684c9e8f32e4373a21098559f748f06915f950c9 |
-| .deps/hal_stm32 | 39130f29ae37c1db34095478ca02b6419b70dcdc |
-| .deps/cmsis_6 | 30a859f44ef8ab4dc8f84b03ed586fd16ccf9d74 |
+| Core/、Drivers/、cmake/ | CubeMX/HAL/FDCAN 生成层、板级 HAL 适配、TIM6 HAL 时基 |
+| components/ | 第三方 Middleware：FreeRTOS 11.3.0、CherryUSB 1.6.1 固定源码及独立库 target |
+| firmware/ | `xcan_app` 应用静态库、USB Vendor 适配和共用 v1/v2 C 协议 |
+| host/ | Rust CLI、协议 v2 库、Linux udev 规则 |
+| tests/、tools/ | 本地测试、构建检查、串口/J-Link 工具 |
+| legacy/zephyr/ | 已归档 Zephyr 工程、设备树及未完成 CAN 草稿 |
+| docs/Schematic/、docs/Reference/ST/ | 原理图和 ST 手册；实装 HSE 为 12 MHz |
+| docs/validation/ | 构建与 HIL 证据，原始 Flash 备份仍保留在本地 |
 
-本机检出使用git clone --shared引用原安装目录的对象；迁移时须重新取得对应依赖，不能只搬走.deps。已验证工具链为Zephyr SDK1.0.1、GNU Arm14.3.0和Python3.12。
+## 板级约定
 
-在项目根目录执行：
+CPU 144 MHz、USB PLLQ 48 MHz；USART1 PA9/PA10 115200 8N1；PB0 心跳；PB2 为人工终端声明（10 ms 四样本），不能代替 120Ω 电阻的实际检测。
 
-    export ZEPHYR_SDK_INSTALL_DIR=/home/gtc/zephyr-sdk-1.0.1
-    /home/gtc/zephyrproject/.venv/bin/python tools/build.py
-    /home/gtc/zephyrproject/.venv/bin/python tools/build.py --usb
-    /home/gtc/zephyrproject/.venv/bin/python tools/check_build.py build/usb
+安全态 PC4/STB=1、PC5/ARM=0、PA1/注入请求=0、PB9/TXD=1。SRAM 首次访问勘误 hook 必须在 Reset 第一条执行。Flash 启动选项不修改。
 
-输出分别为build/bringup/zephyr/和build/usb/zephyr/，含ELF/BIN/HEX/map。check_build.py检查复位向量、hook顺序和配置，生成build-metadata.json与startup-disassembly.txt。
+HAL 使用 TIM6 毫秒时基，FreeRTOS 使用 SysTick。CherryUSB 独占 USB 端点和 IRQ，不同时运行 HAL PCD/ST USB Device 栈。常规驱动使用 HAL，时序敏感路径后续按实测需要使用 LL。
 
-旧LED固件完整128KiB备份：build/bringup/previous-flash.bin，请保留。已验证的烧录脚本为build/usb/flash.jlink；再次烧录前核对镜像哈希、目标和地址。脚本不修改选项字节或mass erase。
+CubeMX 模型为 g431rbt6.ioc，包含 FDCAN1、144 MHz CPU 和 48 MHz USB/FDCAN 时钟。顶层 CMake 保持 CubeMX 模板，只加入 `components`、`firmware` 子目录并链接 `xcan_app`。生成的 main、MSP、IRQ、sysmem 和 startup 各保留唯一实现；FreeRTOS 核心异常和 CherryUSB USB IRQ 通过 CubeMX USER CODE 区转发。startup 中的 SRAM 勘误 hook 必须在 `SystemInit` 和 SRAM 初始化前执行，重新生成后由构建检查验证。
 
-## Rust工具
+硬件测试脚本需要 pyserial、pyusb。本机可复用 /home/gtc/zephyrproject/.venv/bin/python；这是 HIL 工具环境，固件构建不依赖 Zephyr。
 
-    cargo build --release --manifest-path host/Cargo.toml --locked
+## 上位机
+
+    cargo build --release --manifest-path host/Cargo.toml
     host/target/release/xcan list
     host/target/release/xcan info 2036365058315010002D0055
-    host/target/release/xcan echo 2036365058315010002D0055 hello
     host/target/release/xcan self-test 2036365058315010002D0055
+    host/target/release/xcan update 2036365058315010002D0055 build/Release/xcan.signed.bin
 
-设备操作要求明确的非空序列号；超时2秒，失败不自动重发。self-test仅做有界USB回环，不产生CAN流量。
+以上设备命令仅用于明确连接的 X-CAN（C0CA:0313）。v1 INFO/ECHO 保留；v2 升级已接入 USB，要求使用已签名镜像，生产私钥不进入上位机。CAN 数据通路尚未接入。
 
-Linux永久权限（本机gtc已在plugdev组）：
+## 记录
 
-    sudo install -m 0644 host/70-xcan.rules /etc/udev/rules.d/70-xcan.rules
-    sudo udevadm control --reload-rules
-    sudo udevadm trigger --action=add --subsystem-match=usb --attr-match=idVendor=c0ca --attr-match=idProduct=0313
-    sudo udevadm settle
-
-规则匹配指定VID/PID，拔插和重启后仍适用。规则位于73-seat-late.rules之前，支持当前本地会话的uaccess授权。
-
-Windows程序已交叉构建至host/target/x86_64-pc-windows-gnu/release/xcan.exe，命令相同。Windows10/11的实际WinUSB绑定、枚举及回环仍待测试；构建成功不等于Windows实机通过。在Windows本机编译需Rust及配套C构建工具，vendored特性自动编译libusb。
-
-## 检查
-
-    cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/src tests/protocol_test.c firmware/src/protocol.c -o build/protocol-test
-    ASAN_OPTIONS=detect_leaks=0 build/protocol-test
-    cargo test --manifest-path host/Cargo.toml --locked
-    cargo clippy --manifest-path host/Cargo.toml --locked -- -D warnings
-
-协议见docs/USB_BRINGUP_PROTOCOL.md；实施记录见docs/validation/2026-09-11/M1_IMPLEMENTATION.md。
-示波器项目延期；CAN/FD、注入、看门狗、完整异常恢复和Windows实机仍按后续阶段验收。
+- [当前计划状态](docs/PROJECT_STATUS.md)
+- [CubeMX 再集成及本轮 HIL](docs/validation/2026-09-14/cubemx-reintegration/REPORT.md)
+- [HAL 移植及再生成说明](docs/validation/2026-09-14/hal-migration/REPORT.md)
+- [轻量对照 HIL](docs/validation/2026-09-14/stack-comparison/hil/REPORT.md)
+- [协议 v2](docs/USB_CAN_PROTOCOL_V2.md)
+- [Boot冻结与升级本地测试](docs/validation/2026-09-14/firmware-update/REPORT.md)
+- [硬件评审](docs/HARDWARE_REVIEW_AND_PLAN.md)
+- [Zephyr 归档入口](legacy/zephyr/README.md)

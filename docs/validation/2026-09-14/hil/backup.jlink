@@ -1,0 +1,7 @@
+connect
+h
+mem32 0xE0042000 1
+mem32 0x40022020 1
+savebin docs/validation/2026-09-14/hil/pre-flash.bin 0x08000000 0x20000
+g
+exit

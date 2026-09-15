@@ -1,0 +1,19 @@
+{
+  "authorization": "User requested flash and HIL",
+  "target": "STM32G431RB X-CAN",
+  "probe": "63728769",
+  "SWD_kHz": 1000,
+  "uart": "ttyUSB0 RX only 115200 8N1",
+  "artifact": "build/comparison/freertos_cherryusb/xcan.bin",
+  "sha256": "5c11f9e61b5632c4704de7df28a84ba7ddbd41c3e24c9c3e13c8586df1833cf6",
+  "load_address": "0x08000000",
+  "bytes": 15932,
+  "backup_bytes": 131072,
+  "power": "Prior user 3.31V/5.14V; check VTref",
+  "isolation": "CAN disconnected per user; no CAN or injection in image",
+  "NRST": "connected",
+  "option_bytes": "read only",
+  "bounds": "backup, flash verify reset/run, USB INFO ECHO descriptors, GPIO inspection",
+  "recovery": "full backup and known-good Zephyr",
+  "revision": "HIL fix: preserve FLASH_ACR DBG_SWEN"
+}

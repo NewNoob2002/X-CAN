@@ -1,0 +1,82 @@
+{
+  "date": "2026-09-14",
+  "scope": "M1 INFO/ECHO; local comparison only; no flashing",
+  "compiler": "arm-zephyr-eabi-gcc (Zephyr SDK 1.0.1) 14.3.0",
+  "git_head": "015ca6a334cf0a634498c45d829be2ca37c92d10",
+  "working_tree": "uncommitted; source file hashes below",
+  "baseline": {
+    "bin": "build/system/usb/zephyr/zephyr.bin",
+    "sha256": "5a98344202229cd25b2704af109ff3882173351994c8c3646d476fc919dabc7f",
+    "flash_bytes": 67156,
+    "ram_region_bytes": 13704
+  },
+  "comparison": {
+    "flash_bytes": 15932,
+    "ram_allocated_bytes": 8024,
+    "ram_data_bytes": 56,
+    "ram_bss_bytes": 5920,
+    "ram_isr_stack_bytes": 2048,
+    "main_stack_bytes": 2048,
+    "usb_stack_bytes": 1536,
+    "idle_stack_bytes": 512,
+    "heap_bytes": 0,
+    "initial_sp": "0x20008000",
+    "reset_vector": "0x8000ac1",
+    "hil": "M1 feasibility passed; see hil/result.json"
+  },
+  "artifacts": {
+    "xcan.elf": {
+      "bytes": 839012,
+      "sha256": "1f92d344b1e3aec084eaaea9459245e07aedb856b9163a05d75eb81ea449ccec"
+    },
+    "xcan.bin": {
+      "bytes": 15932,
+      "sha256": "5c11f9e61b5632c4704de7df28a84ba7ddbd41c3e24c9c3e13c8586df1833cf6"
+    },
+    "xcan.hex": {
+      "bytes": 44770,
+      "sha256": "8264fdafd7cce468635120ecabef02c53f6a037e277958b10d05bf44e55e5ebf"
+    },
+    "xcan.map": {
+      "bytes": 154437,
+      "sha256": "087d8889c371eca3840f6c16ff21de745c0141f89f9fab47902f2ef402ab502a"
+    },
+    "compile_commands.json": {
+      "bytes": 17345,
+      "sha256": "211b4507b3ac98c8fdd0078f22f144f5ba9951b1b509177dd41a8bd9bfed5ab5"
+    },
+    "startup.S": {
+      "bytes": 12562,
+      "sha256": "e58819424f67b891f3f9861ba5ca2024e86401543ffdcf575df5b72a95f8bc41"
+    }
+  },
+  "source_sha256": {
+    "/home/gtc/Desktop/workspace/HC32_PROJ/HC32F460xE_MCUBoot_SLAM/components/cherryusb/core/usbd_core.c": "409b74d21a58335d67c19e01cab99447c05443d408b94aad72d3627e34793f56",
+    "boards/xcan/xcan_g431/early_reset.S": "d1b722c9a2f94a64bf3994b45b54246c9fe88e2f04dbb3f4ba7fa2ca7a783bc3",
+    "build/comparison/freertos_cherryusb/startup.S": "e58819424f67b891f3f9861ba5ca2024e86401543ffdcf575df5b72a95f8bc41",
+    "comparison/freertos_cherryusb/CMakeLists.txt": "69bdb2aec03b2d9af8fe315eb0d8cefc90f06b2bf55f23aedfb74741ce50cc95",
+    "comparison/freertos_cherryusb/FreeRTOSConfig.h": "113a2eb16c3c09512f5c4264717343bfb3e1898875294aa5610ada553ff211b0",
+    "comparison/freertos_cherryusb/app.h": "914ca7d5ddc5c26ab14d43ccbb32a9f78d82e80f38e8aef336f13d0da55f58c1",
+    "comparison/freertos_cherryusb/flash.ld": "16cf3bee7513d35fa8c1521cbbfbc76662ac132ffa698dd76c5d829444b99106",
+    "comparison/freertos_cherryusb/main.c": "9ca218c184def4e9003cfcb4367c0c6e55e4ca674db4b91d59b4a66a66588fd3",
+    "comparison/freertos_cherryusb/msos_bytes.h": "06a428d804833b5677d6d4b445d993af093cb927e73db19225614142387260d6",
+    "comparison/freertos_cherryusb/test.sh": "f8d8d4d977ad558611846462faea946765eb7ae049956734de66fd5fcbc60c0e",
+    "comparison/freertos_cherryusb/usb.c": "e6f6db786ac9d3275a350319ffa0aa57268bae44d750288cd09cc0db0c523301",
+    "comparison/freertos_cherryusb/usb_config.h": "794f634ab20600ea12e3a3ae0c3e9663e054425ecc0a29dbe9d3a921368c0edf",
+    "comparison/freertos_cherryusb/usb_test.c": "d8492672a54de294630ffedf15578ed44f361fb344b44028cd60081d03379f1d",
+    "comparison/freertos_cherryusb/vendor/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "comparison/freertos_cherryusb/vendor/fsdev/usb_dc_fsdev.c": "ee84b4fda2b510776ac70b776a5dc583796ecd5ecafe7f56857540a64b7d6193",
+    "comparison/freertos_cherryusb/vendor/fsdev/usb_fsdev_reg.h": "61106f899fe6a5aff6b81654fe360b2c06f2c195a63529bfa8874c59ce33458e",
+    "comparison/freertos_cherryusb/vendor/fsdev/usb_glue_st.c": "8022e3244ed5f5772efd4994f0b28faaa5f28060fa0443a42027c3a9f2b5867b",
+    "firmware/src/protocol.c": "93ddb15f5f3524e4df86833e2c4c317074644fbd509466d5ed705ea343a0a79f",
+    "firmware/src/protocol.h": "947606de45b0ab58a09e888703d90bc963e14b31e49e749b1c1c7ba65a9a4233",
+    "/home/gtc/Desktop/workspace/STM32_PROJ/stm32-ci-test/Middlewares/Third_Party/FreeRTOS-Kernel/list.c": "1a559a55d7b0b67e6ca1733f6a4eb42f707edbb981dd599494397f2f832cf983",
+    "/home/gtc/Desktop/workspace/STM32_PROJ/stm32-ci-test/Middlewares/Third_Party/FreeRTOS-Kernel/portable/GCC/ARM_CM3/port.c": "6bdcc6e59ce2a63b14ddd4816af800efc019f2bf374962a42b6e6567cc754651",
+    "/home/gtc/Desktop/workspace/STM32_PROJ/stm32-ci-test/Middlewares/Third_Party/FreeRTOS-Kernel/queue.c": "101b2653a9449087801e212fff75ca0a220865557f0c63f7ca7b5915a94ef842",
+    "/home/gtc/Desktop/workspace/STM32_PROJ/stm32-ci-test/Middlewares/Third_Party/FreeRTOS-Kernel/tasks.c": "f6eead187c1b29ac5185c972952adfbb8154be0a4389e6460552911469104166"
+  },
+  "flash_saved_bytes": 51224,
+  "flash_saved_percent": 76.28,
+  "ram_saved_bytes": 5680,
+  "revision": "HIL correction: preserve DBG_SWEN"
+}

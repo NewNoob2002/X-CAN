@@ -1,0 +1,30 @@
+{
+  "result": "PASS_LOCAL_HIL_PENDING",
+  "date": "2026-09-14",
+  "release": {
+    "flash": 23040,
+    "ram_reserved": 9720
+  },
+  "debug": {
+    "flash": 26908,
+    "ram_reserved": 9728
+  },
+  "tests": {
+    "C_v1": "PASS ASan/UBSan",
+    "C_v2": "PASS 106 golden vectors; fragmentation/coalescing",
+    "USB_core_adapter": "PASS 3392 echo chunk cases and descriptor/error/recovery",
+    "Rust": "PASS 10 tests offline",
+    "startup_IRQ_heap_bounds": "PASS both presets",
+    "archived_Zephyr_USB": "PASS build, flash 67152",
+    "relocated_LL_comparison": "PASS build, flash 15932",
+    "original_HIL_bin_hashes": "unchanged"
+  },
+  "hardware_access_this_turn": false,
+  "pending": [
+    "HAL HIL",
+    "ioc configuration synchronization",
+    "HAL FDCAN/v2",
+    "injection",
+    "upgrade"
+  ]
+}

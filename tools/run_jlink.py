@@ -17,7 +17,8 @@ if a.uart:
     ready = capture.stdout.readline()
     print(ready, end="", flush=True)
     if "capture ready" not in ready:
-        capture.wait(timeout=5)
+        output, _ = capture.communicate(timeout=5)
+        print(output, end="", flush=True)
         raise SystemExit("UART open failed; target command not executed")
 try:
     result = subprocess.run(["/opt/SEGGER/JLink_V970/JLinkExe", "-Device", "STM32G431RB",

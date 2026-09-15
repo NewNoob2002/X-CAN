@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-14",
+  "target": "STM32G431RB rev X",
+  "probe_serial": "63728769",
+  "usb_serial": "2036365058315010002D0055",
+  "firmware_sha256": "5a98344202229cd25b2704af109ff3882173351994c8c3646d476fc919dabc7f",
+  "firmware_bytes": 67156,
+  "zephyr_revision": "c199f92c7e4bba820573d6be9ba0c75385601b67",
+  "flash_verified": true,
+  "backup_sha256": "1afb6bf68d5c3efa561e92647478fbe1c3d006f40bd1df6bc71b9de99c65138e",
+  "boot": "PASS USB init=0; 144MHz; SAFE; heartbeat",
+  "usb_echoes": 106,
+  "malformed_length_rejected": true,
+  "msos": {
+    "result": "PASS",
+    "serial": "2036365058315010002D0055",
+    "descriptor_hex": "0a0000000000000aa2001400030057494e555342000000000000000000008400040007002a0044006500760069006300650049006e00740065007200660061006300650047005500490044007300000050007b00440039004500370031004400410038002d0033004300420035002d0034004500330042002d0038004100350033002d003500380034003300340031003400450030003000300031007d0000000000",
+    "lengths": [
+      162,
+      1,
+      10,
+      64,
+      255
+    ],
+    "invalid_requests_stalled": 2,
+    "recovery_reads": 2
+  },
+  "optr_before": "FBEFF8AA",
+  "optr_after": "FBEFF8AA",
+  "gpio": "PC4=1 PC5=0 PA1=0 PB9=1; modes verified",
+  "CFSR": "00000000",
+  "HFSR": "00000000",
+  "termination_declared_initial": 0,
+  "termination_transition_test": "PASS 0 -> 1 -> 0",
+  "target_final_state": "running",
+  "limitations": [
+    "no Windows runtime test",
+    "no oscilloscope measurements",
+    "no CAN or injection"
+  ],
+  "infrastructure_events": [
+    "Initial attempt stopped before flash: Serial Studio owned ttyUSB0; user released port, then flash succeeded",
+    "MCP probe_command returned connection text without command results; discarded and replaced with CLI register capture"
+  ],
+  "termination_declared_closed": 1,
+  "termination_declared_reopened": 0,
+  "result": "PASS for scoped startup/GPIO/Linux USB HIL"
+}

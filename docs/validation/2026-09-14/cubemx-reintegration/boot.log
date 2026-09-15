@@ -1,0 +1,22 @@
+X-CAN HAL+FreeRTOS sysclk=144000000 idcode=20036468 optr=fbeff8aa SAFE
+USB init=0 vid=c0ca pid=0313
+alive ms=8 hal_ms=11 termination_declared=-1 SAFE
+termination_declared=0 (manual switch)
+alive ms=1016 hal_ms=1019 termination_declared=0 SAFE
+alive ms=2020 hal_ms=2023 termination_declared=0 SAFE
+alive ms=3024 hal_ms=3027 termination_declared=0 SAFE
+alive ms=4028 hal_ms=4031 termination_declared=0 SAFE
+alive ms=5032 hal_ms=5035 termination_declared=0 SAFE
+alive ms=6036 hal_ms=6039 termination_declared=0 SAFE
+alive ms=7040 hal_ms=7043 termination_declared=0 SAFE
+alive ms=8044 hal_ms=8047 termination_declared=0 SAFE
+alive ms=9048 hal_ms=9051 termination_declared=0 SAFE
+alive ms=10052 hal_ms=10055 termination_declared=0 SAFE
+alive ms=11056 hal_ms=11059 termination_declared=0 SAFE
+alive ms=12060 hal_ms=12063 termination_declared=0 SAFE
+alive ms=13064 hal_ms=13067 termination_declared=0 SAFE
+alive ms=14068 hal_ms=14071 termination_declared=0 SAFE
+alive ms=15072 hal_ms=15075 termination_declared=0 SAFE
+alive ms=16076 hal_ms=16079 termination_declared=0 SAFE
+alive ms=17080 hal_ms=17083 termination_declared=0 SAFE
+alive ms=18084 hal_ms=18087 termination_declared=0 SAFE

@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends gcc-arm-none-eabi ninja-build libusb-1.0-0-dev pkg-config
+          python -m pip install cryptography click pyyaml
+
+      - name: Check Rust formatting and warnings
+        run: |
+          cargo fmt --manifest-path host/Cargo.toml --all -- --check
+          cargo clippy --manifest-path host/Cargo.toml --all-targets --locked -- -D warnings
+
+      - name: Run host regressions
+        run: python tools/test.py
+
+      - name: Generate ephemeral firmware signing key
+        run: openssl ecparam -name prime256v1 -genkey -noout -out "$RUNNER_TEMP/xcan-ci-signing.pem"
+
+      - name: Build and validate Release firmware
+        run: python tools/build.py --preset Release
+        env:
+          XCAN_SIGNING_KEY: ${{ runner.temp }}/xcan-ci-signing.pem
+
+      - name: Build and validate Debug firmware
+        run: python tools/build.py --preset Debug
+        env:
+          XCAN_SIGNING_KEY: ${{ runner.temp }}/xcan-ci-signing.pem

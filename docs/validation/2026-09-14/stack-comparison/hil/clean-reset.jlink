@@ -1,0 +1,6 @@
+connect
+h
+mem32 0xE0002008 6
+r
+g
+exit

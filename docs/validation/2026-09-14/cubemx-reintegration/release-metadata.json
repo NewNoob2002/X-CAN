@@ -1,0 +1,85 @@
+{
+  "scope": "HAL + FreeRTOS M1; local verification, HIL pending",
+  "compiler": "arm-none-eabi-gcc (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
+  "flash_bytes": 26876,
+  "ram_reserved_bytes": 9720,
+  "libc_heap_limit": 1024,
+  "isr_stack_bytes": 2048,
+  "freertos_dynamic_allocation": false,
+  "artifacts": {
+    "xcan.elf": {
+      "bytes": 1574512,
+      "sha256": "39ba350c72b2ec4c5a09a7e84cb57999aa91861b335b8afbcbab068c44ecc295"
+    },
+    "xcan.bin": {
+      "bytes": 26876,
+      "sha256": "ec2939ce68e6037281e564fd161e4cdefb5dd8203b22ca8f498c8a58242af8ca"
+    },
+    "xcan.hex": {
+      "bytes": 75666,
+      "sha256": "dc8800ed1f6c75ac57958cb8d544ee5eb0c73e68caa752b1f69dfa8455df65ec"
+    },
+    "xcan.map": {
+      "bytes": 708452,
+      "sha256": "f1dc1256e3bf66f37180524bfbe80c0a2ad73261ebf88e7ed2657a05965e125b"
+    },
+    "compile_commands.json": {
+      "bytes": 55081,
+      "sha256": "50ff75f6f0f8a91cb2e1552dfb7235364c4d456a54c20f0c43f7a01828472ac9"
+    }
+  },
+  "source_sha256": {
+    "CMakeLists.txt": "9ed97506acef36a4eef034d37b182c9fb6ebabcad238b58183aca0208efac4ce",
+    "Core/Inc/FreeRTOSConfig.h": "377c9ef29506517c2b11dcd5df37129387f9b887b7d2c53fb16f830af3846aaf",
+    "Core/Inc/main.h": "985ae4acc3dc7daa76dede18c6ebf9b320a2506d803a6bafb11539dc3298ef30",
+    "Core/Inc/stm32g4xx_hal_conf.h": "53e3618c0f188a931e23c0c6652dd18d4a47b403b494cf21e7607e992411f888",
+    "Core/Inc/stm32g4xx_it.h": "99992d214825747698967dfe79114acf2c639f6562c42966fcfbef7c8ae9b756",
+    "Core/Inc/xcan_board.h": "100385b8554ca3654dc3628e29f35dd07a0bcc19385afdf9dd082c8297757530",
+    "Core/Src/early_reset.S": "046504078d2ed43eb9b057d3d038aea223e6367b819c7e9b46d4326571524821",
+    "Core/Src/main.c": "8a8205c084f64f7893f96ea0a3c7cea7fbe3161a98f9df91c45c312c27f5465e",
+    "Core/Src/stm32g4xx_hal_msp.c": "5015fa64c84765d7c4b882cf7175bd3b80cc32d4d1871ac12c7d0d432a5ee03f",
+    "Core/Src/stm32g4xx_hal_timebase_tim.c": "219526c83c63826a30ddd0bfb29f2fee43174661a6f4ac31961def35f8b32f4e",
+    "Core/Src/syscalls.c": "03c06c72eafb44b499814cf9234aba57dd830f345d9b8779b5d7090e78517600",
+    "Core/Src/system_stm32g4xx.c": "1de96c381d922635dabc0836d315d66c99b4e9d4a407fef6ee6f5c4e32b0791a",
+    "Core/Src/xcan_board.c": "e7d806076420c249779f5a735d49be52bc0d93624a9337ff8db38ad8845b0595",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.c": "96a7c255246ad457497d2ac4018d00679761b8adeba8e196770ad22391dcb474",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c": "764627455c7ccfd157b45fe7bd5effe78d1bc1c8f99af041f39e1e1e7197c3b6",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.c": "68f8f023a5c516a5d0ba9aa2459b8441fe3f187d7983c18960fa6f37bced4b7b",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.c": "750bba8c3af33a2c5ea5588681baff79e028baec3080473ae550f98a79d3e57c",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_exti.c": "eb1687b291e66fdf7a5a4fb8496f5d411be6c86edd3d75147f64e9e19bc192b3",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash.c": "7894f8cf4a3bd8b214fc826cbb93aa9a20596cfc3c45760f6f775d79e28cbda4",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ex.c": "faa9d7ffa04c9072035273fdf1dedbfee1886a4f58d29f5d0b075263ef06bc30",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ramfunc.c": "5d5d66378381d9db97bfae8077818de467344119516c00d205132786b0b67279",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c": "7bff46e900a1ba30375a98dc58369b9e4e0aab2ee6ea30e5d70e1ece449d5cae",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pcd.c": "675564f8bbe22ebfa008e1d782be43625dc70deacb7ffd8a4eed8ae319ce29dd",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pcd_ex.c": "2418f3769cd40af202a42cc9f37a41a67645268da0d8339b2d81b832172bf98b",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr.c": "a8303b059435dfe1e6e6a558ca1b1441c875156058d7cf9cc49a21264409f7af",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c": "e86b738668581f6e1a2acf59010f5eceb236f94a0dc6a1a8554ddf24a6437bd4",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.c": "446b3b7319a22f118526a4665da8971ba48c0c31634a32a2215c6aa8b8a9ba3e",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.c": "e82f43fd5c78801d126b86ea083853d6ea263935d77ae0b3da7d50fea4806ae4",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c": "12e54b95045f3f0fa930cecca7a400f0d8e7e0a0e2c627d661152ff0ad5a39a9",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c": "189fe4e60974b4408116e5fc7bd2d611067d5b14f9ffb9f22eb6f6bda49bc363",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c": "434370a76ac8a2e17b5df05ff97ee5382600a9d3d022f97588cb41f9693a3377",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c": "aca1a24fc2c9f4f5da3d39149a150cc5f444f951a50d98feb6d9b69443e18d5c",
+    "Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_usb.c": "8f0184da5287812d825105e66d6b0c58bb27997a92725b2a1035f1a743453c93",
+    "Middlewares/CherryUSB/core/usbd_core.c": "409b74d21a58335d67c19e01cab99447c05443d408b94aad72d3627e34793f56",
+    "Middlewares/CherryUSB/port/fsdev/usb_dc_fsdev.c": "ee84b4fda2b510776ac70b776a5dc583796ecd5ecafe7f56857540a64b7d6193",
+    "Middlewares/FreeRTOS-Kernel/list.c": "1a559a55d7b0b67e6ca1733f6a4eb42f707edbb981dd599494397f2f832cf983",
+    "Middlewares/FreeRTOS-Kernel/portable/GCC/ARM_CM4F/port.c": "415481bd5077833ec512e6a9a73d568ab0e96a48395ff67584b889fa6d017b8c",
+    "Middlewares/FreeRTOS-Kernel/queue.c": "101b2653a9449087801e212fff75ca0a220865557f0c63f7ca7b5915a94ef842",
+    "Middlewares/FreeRTOS-Kernel/tasks.c": "f6eead187c1b29ac5185c972952adfbb8154be0a4389e6460552911469104166",
+    "STM32G431XX_FLASH.ld": "9d100d2c7cefde3f01ac285c1c1558c992b0b64dcac24cc5dfffa95bea5c81da",
+    "build/Release/startup.S": "7af894b7fb967095f80ec5ca8626326fb8887bd29227f49c78ac637237032c06",
+    "cmake/gcc-arm-none-eabi.cmake": "72fcd01386275f45dd2d83171bee0eb294ffb9a208219661727109302942e2d7",
+    "firmware/src/app.c": "27988c7dd6dfb462af0dec49c920ecdbe44eff20748172c7a4c61507b024cecf",
+    "firmware/src/app.h": "914ca7d5ddc5c26ab14d43ccbb32a9f78d82e80f38e8aef336f13d0da55f58c1",
+    "firmware/src/interrupts.c": "91b0cb68d8922ca9997bd6b0fbffc8c06e0a27ca1f2f2789708751c66c9b4192",
+    "firmware/src/msos_bytes.h": "06a428d804833b5677d6d4b445d993af093cb927e73db19225614142387260d6",
+    "firmware/src/protocol.c": "93ddb15f5f3524e4df86833e2c4c317074644fbd509466d5ed705ea343a0a79f",
+    "firmware/src/protocol.h": "947606de45b0ab58a09e888703d90bc963e14b31e49e749b1c1c7ba65a9a4233",
+    "firmware/src/protocol_v2.h": "832a6dd5ceed983e63e934b0a742aef75df7bf447f9a5227819fea89a0c0fb09",
+    "firmware/src/sysmem.c": "0fcd9b368a226b215bf14b5de193dfb304458ac0160599a35336b1323125f372",
+    "firmware/src/usb.c": "e6f6db786ac9d3275a350319ffa0aa57268bae44d750288cd09cc0db0c523301",
+    "firmware/src/usb_config.h": "794f634ab20600ea12e3a3ae0c3e9663e054425ecc0a29dbe9d3a921368c0edf"
+  }
+}

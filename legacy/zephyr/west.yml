@@ -1,0 +1,10 @@
+# Historical hardware-tested baseline (2026-09-11). tools/build.py uses the selected external workspace.
+manifest:
+  projects:
+    - name: zephyr
+      url: https://github.com/zephyrproject-rtos/zephyr
+      revision: 684c9e8f32e4373a21098559f748f06915f950c9
+      import:
+        name-allowlist: [cmsis_6, hal_stm32]
+  self:
+    path: x-can

@@ -1,0 +1,24 @@
+{
+  "sources": {
+    "zephyr": {
+      "path": "/home/gtc/zephyrproject/zephyr",
+      "revision": "c199f92c7e4bba820573d6be9ba0c75385601b67",
+      "tracked_changes": false
+    },
+    "hal_stm32": {
+      "path": "/home/gtc/zephyrproject/modules/hal/stm32",
+      "revision": "33576ef05e529cad803f210cc95b52b607757c96",
+      "tracked_changes": false
+    },
+    "cmsis_6": {
+      "path": "/home/gtc/zephyrproject/modules/hal/cmsis_6",
+      "revision": "b2dfbe1a20bbd49c2d2c605073799671074bbb30",
+      "tracked_changes": false
+    }
+  },
+  "previous_artifacts": {
+    "build/bringup/previous-flash.bin": "580d48a9232b60103e3e6c0dd6ccc905483cbff5838313ac4ce95b4669234183",
+    "build/usb/zephyr/zephyr.bin": "addfc52f8a5d31f8388388b55c7246314b5a5f5295eb8700f4b6ef53fb588390"
+  },
+  "validation": "build only; no board operations"
+}

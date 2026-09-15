@@ -1,0 +1,11 @@
+Initial image:
+clock_hz=144000000 idcode=20036468 uptime_ms=243372 termination_declared=0 safe=1
+PASS: 106 echoes (0..52 bytes, whole/split writes), malformed length rejected
+MSOS: PASS; 162-byte descriptor, lengths 1/10/64/255, two invalid requests stalled and recovered.
+User closed declaration switch:
+clock_hz=144000000 idcode=20036468 uptime_ms=29427 termination_declared=1 safe=1
+User then opened declaration switch.
+Fixed image after clean reset:
+clock_hz=144000000 idcode=20036468 uptime_ms=29202 termination_declared=0 safe=1
+PASS: 106 echoes (0..52 bytes, whole/split writes), malformed length rejected
+MSOS: PASS; descriptor identical to initial image and Zephyr evidence; invalid_requests_stalled=2, recovery_reads=2.

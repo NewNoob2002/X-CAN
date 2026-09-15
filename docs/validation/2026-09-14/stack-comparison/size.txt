@@ -1,0 +1,22 @@
+/home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/comparison/freertos_cherryusb/xcan.elf  :
+section             size        addr
+.isr_vector          472   134217728
+.text              15364   134218240
+.data                 56   536870912
+.bss                5920   536870968
+.isr_stack          2048   536901632
+.debug_info        36961           0
+.debug_abbrev       6913           0
+.debug_loclists    19082           0
+.debug_aranges      1288           0
+.debug_rnglists     2013           0
+.debug_macro      103420           0
+.debug_line        28558           0
+.debug_str        602854           0
+.comment              31           0
+.ARM.attributes       48           0
+.debug_frame        3428           0
+.debug_line_str      172           0
+Total             828628
+
+

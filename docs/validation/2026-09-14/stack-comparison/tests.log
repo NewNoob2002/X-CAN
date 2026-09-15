@@ -1,0 +1,1 @@
+PASS real CherryUSB core + adapter: descriptors, MSOS strict requests/recovery, 3392 echo chunk cases, INFO states, malformed framing, reset/deconfigure, enqueue failures

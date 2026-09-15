@@ -1,12 +1,14 @@
 # X-CAN 硬件评审与首版开发规划
 
-实施进展：独立Zephyr板型、SRAM早期规避、144MHz/48MHz配置、USART1、PB2声明输入与Vendor USB/Rust最小闭环已实现；Linux回环实测通过，Windows程序已构建但实机待验。见[M1实施记录](validation/2026-09-11/M1_IMPLEMENTATION.md)。示波器项目仍延期，CAN/注入尚未开放。
+2026-09-14 更新：软件主线已切换为 HAL + FreeRTOS + CherryUSB，Zephyr 移至 legacy/zephyr/。本文件保留硬件评审和初始规划上下文；当前执行状态见 PROJECT_STATUS.md，移植记录见 validation/2026-09-14/hal-migration/REPORT.md。
 
-日期：2026-09-11。状态：原理图与本地 ST 文档核对完成；实机确认修订 X、主 Flash 启动，用户测得 3V3_SYS=3.31 V、5V_SYS=5.14 V，STB/ARM/注入请求/TXD 四项默认静态电平符合预期。实装晶振为 12 MHz，原理图 8 MHz 标注待修订。Zephyr 指定版本驱动核对及剩余样板测量见 [实机与驱动核对报告](validation/2026-09-11/REPORT.md)。USB/CAN/注入尚待验证。
+状态更新：2026-09-14。当前为 **M1 收尾，M2 协议基础完成、CAN待接入**。完整节点状态与工作区索引见 [当前状态](PROJECT_STATUS.md)，本机 Zephyr 4.4.99 已完成构建、烧录和 Linux USB HIL，PB2 声明0→1→0、106次回环及MS OS描述符检查通过。Windows实机、看门狗与完整异常恢复尚待完成；示波器项目延期，CAN/注入尚未实现。
+
+本文硬件分析及初始方案形成于2026-09-11，以下器件和驱动依据保留原审查版本。当前实现与验收证据见 [9月14日HIL报告](validation/2026-09-14/hil/REPORT.md)；历史4.4.0实现见 [M1实施记录](validation/2026-09-11/M1_IMPLEMENTATION.md)。
 
 ## 1. 范围与结论
 
-已阅读 `Schematic/SCH_Schematic1_2026-09-11.pdf` 全部四页：CORE、USB、POWER、CAN。当前目录没有固件、PCB、BOM 或网表，不能从 PDF 确认实物焊接、封装、布局及电气性能。
+已阅读 docs/Schematic/SCH_Schematic1_2026-09-11.pdf 全部四页：CORE、USB、POWER、CAN。评审时尚无固件；现已有板级/USB固件和Rust工具。PCB、BOM及网表仍未提供，不能从PDF确认实物焊接、封装、布局及电气性能。
 
 用户已确认：
 
@@ -113,7 +115,7 @@ CAN-FD 建议按 500 kbit/s 仲裁 + 2 Mbit/s 数据阶段起步，再验证 5 M
 
 ### 4.1 基线与板级定义
 
-建议先固定 **Zephyr v4.4.0** 及其 west 依赖版本。已读取该 tag 的 CAN 驱动与设备树，作为规划基线；正式建工程时仍需验证工具链与最小构建。此处不是要求跟踪 `main`。[S4][S7][S8]
+初始规划与9月11日实机基线为 **Zephyr v4.4.0**。[S4][S7][S8] 9月14日已改为复用主机4.4.99提交c199f92c7e4bba820573d6be9ba0c75385601b67，并完成基础/USB HIL。west.yml保留历史版本；后续FDCAN实现需在当前确切提交上重新核对相关驱动，不能直接套用旧版审查结论。
 
 创建本项目独立 board 定义，参考 `nucleo_g431rb` 的 SoC 配置，不直接把其板级设置用于 X-CAN。尤其是参考板 PC4/PC5 的串口复用会与本板 STB/ARM 冲突，PA2/PA3 的控制台用途也与本板 TIM2 扩展冲突。[S1][S3]
 
@@ -235,16 +237,16 @@ TIM2_CH1/CH2 共享计数器、预分频器与 ARR。首版先把 TIM2 专用于
 
 ## 6. 当前待关闭的问题
 
-终端阻值检查已通过：用户完成表笔悬空 OL / 短接0对照，固定 CANH–CANL 测点复测得终端断开 OL、接入120 Ω。此前报告的断开0.0 Ω已更正，疑似低阻异常关闭，无需因此返修；PB2声明逻辑仍待验证。详见实机核对报告。
+终端阻值检查已通过：用户完成表笔悬空 OL / 短接0对照，固定 CANH–CANL 测点复测得终端断开 OL、接入120 Ω。此前报告的断开0.0 Ω已更正，疑似低阻异常关闭，无需因此返修；PB2声明逻辑已在4.4.0及当前4.4.99固件通过闭合/断开验证。详见实机核对报告。
 
 1. 用户已确认两拨码独立且用于人工声明，不再将机械联动列为缺陷；后续归档 SW2/SW3 位号对应与实物版本即可。
 2. PCB、BOM 和网表不可用，无法确认布局、封装和电气连通性。
-3. ST 文档缺失、实际 REV_ID 和 Flash 启动配置核对已关闭；锁定版 Zephyr 的相关实现已对照，落实项见实机与驱动核对报告。剩余是启动规避、最终时钟配置与台架测量，不需重新下载手册。
+3. ST 文档缺失、实际 REV_ID 和 Flash 启动配置核对已关闭；锁定版 Zephyr 的相关实现已对照，落实项见实机与驱动核对报告。SRAM早期规避与144MHz/PLLQ 48MHz配置已经实现并经构建/实机验证；剩余包括波形测量及后续CAN驱动在当前版本的复核，不需重新下载手册。
 4. U3 标注含 UMW，需按实物厂商核对传播延迟、输出能力和上/掉电行为，不能直接代用其他厂商典型值。
 5. 已记录 J-Link 63728769、DS100、UT33B+；NRST 已接、USART_TX 接至 /dev/ttyUSB0。用户已确认 CAN 端子脱离工作总线；两个正常 CAN 节点及 FD 能力仍待明确。
 6. 精度、最高数据速率与持续满载能力尚未实测，计划中给出的数值均为待验收目标或建议上限。
 
-当前先推进独立 Zephyr board、USART1/PB2 与 Vendor USB/Rust 双平台通信验证；M0示波器项目按用户要求延期，设备可用后补测。不重复 LED 最小固件测试，不改既有 Flash 启动配置。
+当前先收尾M1的看门狗、USB异常恢复与Windows实机验证，再推进M2内部回环和帧流；独立board及USART1/PB2/Linux USB已通过。M0示波器项目按用户要求延期，设备可用后补测。不重复 LED 最小固件测试，不改既有 Flash 启动配置。
 
 ### 6.1 已取得的 ST 文档与阅读范围
 
@@ -299,4 +301,4 @@ ES0431 修订映射覆盖 Z/Y/X，REV_ID 分别为 `0x2001` / `0x2002` / `0x2003
 - **[S13] 定时器应用**：`docs/Reference/ST/an4776-how-to-use-generalpurpose-timer-peripheral-on-stm32-mcus-stmicroelectronics.pdf`，AN4776 Rev 4。
 - **[S14] USB 硬件指南**：`docs/Reference/ST/an4879-introduction-to-usb-hardware-and-pcb-guidelines-using-stm32-mcus-stmicroelectronics.pdf`，AN4879 Rev 12。
 
-已依据本地 ST 文档关闭资料缺失项，并完成只读实物寄存器核对；原始记录与实施约束见 validation/2026-09-11/。未进行固件构建、烧录或 CAN 发送/注入。
+初次评审已关闭ST资料缺失项并完成只读寄存器核对。后续固件构建与烧录、USB HIL已完成，见validation/2026-09-14/hil/；截至本次更新尚未进行CAN发送或注入。

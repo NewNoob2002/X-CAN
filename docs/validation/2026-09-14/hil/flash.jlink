@@ -1,0 +1,6 @@
+connect
+loadfile build/system/usb/zephyr/zephyr.bin 0x08000000
+verifybin build/system/usb/zephyr/zephyr.bin 0x08000000
+r
+g
+exit

@@ -1,0 +1,80 @@
+{
+  "result": "PASS",
+  "safe_gpio": {
+    "CAN_STB": {
+      "mode": 1,
+      "otype": 0,
+      "pull": 0,
+      "idr": 1,
+      "odr": 1
+    },
+    "INJECT_ARM": {
+      "mode": 1,
+      "otype": 0,
+      "pull": 0,
+      "idr": 0,
+      "odr": 0
+    },
+    "INJECT_REQ": {
+      "mode": 1,
+      "otype": 0,
+      "pull": 0,
+      "idr": 0,
+      "odr": 0
+    },
+    "CAN_TX": {
+      "mode": 1,
+      "otype": 0,
+      "pull": 0,
+      "idr": 1,
+      "odr": 1
+    }
+  },
+  "term_declared": {
+    "mode": "input",
+    "pull": "none",
+    "observed": [
+      0,
+      1,
+      0
+    ],
+    "two_state_test": "PASS: user-operated 0 -> 1 -> 0, final USB INFO safe=1"
+  },
+  "vtor": "0x08000000",
+  "cfsr": 0,
+  "hfsr": 0,
+  "priorities": {
+    "TIM6": 4,
+    "USB": 6,
+    "PendSV": 15,
+    "SysTick": 15
+  },
+  "TIM6": {
+    "prescaler": 143,
+    "arr": 999
+  },
+  "SysTick_reload": 143999,
+  "dual_tick_samples": 19,
+  "hal_minus_rtos_ms": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+  ],
+  "clock_note": "register-derived nominal frequency, not external frequency measurement"
+}

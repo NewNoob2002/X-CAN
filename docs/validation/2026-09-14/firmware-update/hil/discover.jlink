@@ -1,0 +1,5 @@
+connect
+mem32 0xE0042000 1
+mem32 0x40022020 1
+g
+exit

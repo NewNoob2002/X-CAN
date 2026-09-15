@@ -1,0 +1,11 @@
+[0/1] Re-running CMake...
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/comparison/freertos_cherryusb
+[1/2] Building ASM object CMakeFiles/xcan.elf.dir/startup.S.obj
+[2/2] Linking C executable xcan.elf
+Memory region         Used Size  Region Size  %age Used
+           FLASH:       15932 B       128 KB     12.16%
+             RAM:         32 KB        32 KB    100.00%
+   text	   data	    bss	    dec	    hex	filename
+  15836	     56	   7968	  23860	   5d34	xcan.elf

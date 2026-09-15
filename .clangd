@@ -1,11 +1,2 @@
 CompileFlags:
-  CompilationDatabase: build/usb
-  Remove:
-    - -fno-printf-return-value
-    - -mfp16-format=ieee
-    - -fno-reorder-functions
----
-If:
-  PathMatch: tests/host/foc/.*
-CompileFlags:
-  CompilationDatabase: build/host
+  CompilationDatabase: build/Release

@@ -1,0 +1,18 @@
+# Checked source adaptation, generated only inside this build directory.
+set(xcan_mcan "${CMAKE_BINARY_DIR}/xcan_can_mcan.c")
+execute_process(COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/../tools/patch_mcan.py
+  ${ZEPHYR_BASE}/drivers/can/can_mcan.c ${xcan_mcan} COMMAND_ERROR_IS_FATAL ANY)
+get_target_property(can_sources drivers__can SOURCES)
+set(replaced FALSE)
+foreach(source IN LISTS can_sources)
+  if(source MATCHES "(^|/)can_mcan\\.c$")
+    list(REMOVE_ITEM can_sources "${source}")
+    list(APPEND can_sources "${xcan_mcan}")
+    set(replaced TRUE)
+  endif()
+endforeach()
+if(NOT replaced)
+  message(FATAL_ERROR "Cannot locate Zephyr M_CAN target source")
+endif()
+set_property(TARGET drivers__can PROPERTY SOURCES "${can_sources}")
+target_include_directories(drivers__can PRIVATE ${ZEPHYR_BASE}/drivers/can)

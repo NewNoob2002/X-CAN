@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-09-14T07:26:48.388270+00:00",
+  "source_revision": "015ca6a334cf0a634498c45d829be2ca37c92d10",
+  "working_tree_dirty": true,
+  "scope": "CubeMX reintegration, M1 HAL/FreeRTOS/CherryUSB firmware and available Linux HIL",
+  "firmware_sha256": "ec2939ce68e6037281e564fd161e4cdefb5dd8203b22ca8f498c8a58242af8ca",
+  "builds": {
+    "Release": {
+      "flash_bytes": 26876,
+      "ram_reserved_bytes": 9720
+    },
+    "Debug": {
+      "flash_bytes": 31244,
+      "ram_reserved_bytes": 9728
+    }
+  },
+  "passed": [
+    "Release/Debug build and startup/IRQ/heap checks",
+    "C protocol and real CherryUSB ASan/UBSan regression",
+    "10 Rust tests",
+    "full pre-flash backup and programming readback",
+    "UART startup and 19 dual-tick samples",
+    "safe GPIO modes, IDR and ODR",
+    "zero Cortex-M fault registers",
+    "USB 106 echoes and malformed-length rejection",
+    "MS OS descriptor lengths and two STALL/recovery cases",
+    "250ms host read pause, handle reopen, partial-request USB reset recovery",
+    "PB2 user-operated 0 -> 1 -> 0, USB/UART confirmed"
+  ],
+  "pending": [
+    "Windows physical host",
+    "cold power-on, cable reversal and physical unplug/replug",
+    "USB suspend/resume",
+    "oscilloscope startup/pulse measurements"
+  ],
+  "not_implemented": [
+    "CAN capture/transmit and v2 transport",
+    "timer injection",
+    "watchdog/reset-cause reporting"
+  ],
+  "infrastructure_notes": [
+    "Initial UART precheck aborted before programming because system Python lacked pyserial. Reused existing /home/gtc/zephyrproject/.venv/bin/python; no package installation."
+  ],
+  "programming_attempts": 1,
+  "evidence": [
+    "preflight.json",
+    "backup-result.json",
+    "flash.log",
+    "boot.log",
+    "runtime-result.json",
+    "observed-tests.json",
+    "usb-recovery-result.json",
+    "deployment-result.json"
+  ],
+  "final_state": "Running SAFE firmware, TERM_DECLARED=0"
+}

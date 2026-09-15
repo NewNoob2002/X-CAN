@@ -1,0 +1,49 @@
+
+/home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/system/bringup/zephyr/zephyr.elf:     file format elf32-littlearm
+
+
+Disassembly of section rom_start:
+
+Disassembly of section text:
+
+080010b4 <__start>:
+ 80010b4:	f000 fb8a 	bl	80017cc <soc_early_reset_hook>
+ 80010b8:	480a      	ldr	r0, [pc, #40]	@ (80010e4 <__start+0x30>)
+ 80010ba:	f380 8808 	msr	MSP, r0
+ 80010be:	2010      	movs	r0, #16
+ 80010c0:	f380 8811 	msr	BASEPRI, r0
+ 80010c4:	4808      	ldr	r0, [pc, #32]	@ (80010e8 <__start+0x34>)
+ 80010c6:	f44f 6104 	mov.w	r1, #2112	@ 0x840
+ 80010ca:	1840      	adds	r0, r0, r1
+ 80010cc:	f380 8809 	msr	PSP, r0
+ 80010d0:	f3ef 8014 	mrs	r0, CONTROL
+ 80010d4:	2102      	movs	r1, #2
+ 80010d6:	4308      	orrs	r0, r1
+ 80010d8:	f380 8814 	msr	CONTROL, r0
+ 80010dc:	f3bf 8f6f 	isb	sy
+ 80010e0:	f000 f866 	bl	80011b0 <z_prep_c>
+ 80010e4:	20001580 	.word	0x20001580
+ 80010e8:	200003c0 	.word	0x200003c0
+
+/home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/system/bringup/zephyr/zephyr.elf:     file format elf32-littlearm
+
+
+Disassembly of section rom_start:
+
+Disassembly of section text:
+
+080017cc <soc_early_reset_hook>:
+ 80017cc:	4808      	ldr	r0, [pc, #32]	@ (80017f0 <xcan_sram_parity_unsupported+0x6>)
+ 80017ce:	6801      	ldr	r1, [r0, #0]
+ 80017d0:	f011 7f80 	tst.w	r1, #16777216	@ 0x1000000
+ 80017d4:	f000 8009 	beq.w	80017ea <xcan_sram_parity_unsupported>
+ 80017d8:	f04f 5000 	mov.w	r0, #536870912	@ 0x20000000
+ 80017dc:	6801      	ldr	r1, [r0, #0]
+ 80017de:	4805      	ldr	r0, [pc, #20]	@ (80017f4 <xcan_sram_parity_unsupported+0xa>)
+ 80017e0:	6801      	ldr	r1, [r0, #0]
+ 80017e2:	f04f 5080 	mov.w	r0, #268435456	@ 0x10000000
+ 80017e6:	6801      	ldr	r1, [r0, #0]
+ 80017e8:	4770      	bx	lr
+
+080017ea <xcan_sram_parity_unsupported>:
+ 80017ea:	f7ff bffe 	b.w	80017ea <xcan_sram_parity_unsupported>

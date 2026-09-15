@@ -1,0 +1,42 @@
+{
+  "format": 1,
+  "status": "frozen",
+  "freeze_date": "2026-09-14",
+  "boot_version": "0.1.0",
+  "mcuboot_version": "2.4.0",
+  "strategy": "swap-using-offset/test-revert",
+  "signature": "ECDSA-P256",
+  "public_key_sha256": "9b044372d62bc7bede56344763548b674b776fec6dd0b12e26021f49cf0b14dc",
+  "flash": {
+    "address": "0x08000000",
+    "limit_bytes": 24576,
+    "used_bytes": 14512,
+    "headroom_bytes": 10064
+  },
+  "ram_used_bytes": 3424,
+  "compiler": "arm-none-eabi-gcc 14.3.1 20250623",
+  "git_head": "015ca6a334cf0a634498c45d829be2ca37c92d10",
+  "source_state": "workspace contains the CubeMX migration changes recorded by build-metadata.json",
+  "artifacts": {
+    "xcan_boot.bin": {
+      "bytes": 14512,
+      "sha256": "ff10334bfefae8d39093619af2af74fc8b9c19764bce12738cf6e75d67822b8e"
+    },
+    "xcan_boot.hex": {
+      "bytes": 40905,
+      "sha256": "7647895fc129d18e97b9d824b2c6741894f4cb29c6915aa0e603a6927a51eb4f"
+    },
+    "xcan_boot.elf": {
+      "bytes": 1251996,
+      "sha256": "cd8534806c5566e4f444bd3070bfc56582d1151550d86ff3c1a4851b97b1e115"
+    },
+    "xcan_boot.map": {
+      "bytes": 348669,
+      "sha256": "0568d9f68bc0a87d599a7b2020c30475796f752ddfd73545560f2de4229f72cf"
+    },
+    "mcuboot_public_key.c": {
+      "bytes": 728,
+      "sha256": "252bc453dbe40cbba2e992b30e6bc02c4d29520a7dcb8bb9857c3b118c8d5d76"
+    }
+  }
+}

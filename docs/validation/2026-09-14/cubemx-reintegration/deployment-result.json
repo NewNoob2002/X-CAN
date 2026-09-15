@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-09-14T07:24:58.091855+00:00",
+  "safety_preflight": "preflight.json",
+  "target": {
+    "board": "X-CAN STM32G431RB",
+    "probe_serial": "63728769",
+    "usb_serial": "2036365058315010002D0055"
+  },
+  "tool": {
+    "id": "J-Link Commander",
+    "version": "9.70"
+  },
+  "artifact": "build/Release/xcan.bin",
+  "artifact_sha256": "ec2939ce68e6037281e564fd161e4cdefb5dd8203b22ca8f498c8a58242af8ca",
+  "destination": "0x08000000",
+  "verified": true,
+  "reset_after_deploy": true,
+  "final_state": "Running HAL + FreeRTOS + CherryUSB M1 SAFE firmware",
+  "log": "flash.log",
+  "backup": "backup-result.json",
+  "rollback": {
+    "required": false,
+    "exercised": false
+  }
+}

@@ -1,0 +1,7 @@
+connect
+h
+savebin /home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/docs/validation/2026-09-14/firmware-update/hil/pre-test-flash.bin 0x08000000 0x20000
+mem32 0xE0042000 1
+mem32 0x40022020 1
+g
+exit

@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "serial": "2036365058315010002D0055",
+  "host_read_pause_ms": 250,
+  "reopen": true,
+  "partial_request_reset_recovery": true,
+  "usb_resets": 1,
+  "termination_declared": 0,
+  "safe": 1
+}

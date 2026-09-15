@@ -1,0 +1,21 @@
+mainmenu "X-CAN"
+source "Kconfig.zephyr"
+config XCAN_USB
+    bool "Vendor USB bringup protocol"
+    default n
+config XCAN_CAN
+    bool "X-CAN v2 USB and FDCAN service"
+    depends on XCAN_USB
+    default n
+config XCAN_INTERNAL_LOOPBACK
+    bool "Internal CAN loopback with transceiver kept in standby"
+    depends on XCAN_CAN
+    default n
+config XCAN_USB_VID
+    hex "USB vendor ID"
+    range 0x1 0xffff
+    default 0xC0CA
+config XCAN_USB_PID
+    hex "USB product ID"
+    range 0x1 0xffff
+    default 0x0313

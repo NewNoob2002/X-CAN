@@ -1,0 +1,8 @@
+connect
+h
+mem32 0xE0042000 1
+mem32 0x40022020 1
+mem32 0x1FFF7590 3
+savebin /home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/docs/validation/2026-09-14/hal-migration/hil/pre-flash.bin 0x08000000 0x20000
+g
+exit

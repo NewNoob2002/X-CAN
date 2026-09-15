@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "timestamp_utc": "2026-09-14T07:15:58.304480+00:00",
+  "authorization": "User requested reintegration and HIL test firmware on current X-CAN board",
+  "approved": true,
+  "target": {
+    "board": "X-CAN STM32G431RB",
+    "probe_or_adapter_serial": "63728769",
+    "usb_serial": "2036365058315010002D0055",
+    "idcode": "0x20036468",
+    "transport": "SWD 1000 kHz / USB / receive-only UART 115200 8N1"
+  },
+  "operation": [
+    "backup",
+    "flash",
+    "verify",
+    "reset",
+    "halt/read/resume",
+    "USB INFO/ECHO/control regression",
+    "UART capture"
+  ],
+  "artifact_or_stimulus": "/home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/Release/xcan.bin",
+  "sha256": "ec2939ce68e6037281e564fd161e4cdefb5dd8203b22ca8f498c8a58242af8ca",
+  "load_address": "0x08000000",
+  "bytes": 26876,
+  "limits": "Backup 128 KiB internal flash before overwrite. One programming operation with verifybin. No option-byte writes, mass erase, CAN transmissions, or injection. Individual UART captures <=60s; USB transfer timeout 2s; serial discovery must match unique target. Check VTref before programming.",
+  "power": "VTref=3.414V observed via J-Link; USB powered",
+  "recovery_plan": "Preserve full pre-flash backup at build/hil-reintegration/preflash.bin; stop on error and retain logs; SWD/NRST recovery via same probe. Final state running SAFE firmware.",
+  "option_bytes": "0xFBEFF8AA read back, not modified"
+}

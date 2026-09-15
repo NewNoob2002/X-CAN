@@ -1,0 +1,6 @@
+connect
+loadfile /home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/docs/validation/2026-09-14/firmware-update/hil/xcan_factory_0.1.0_clean.bin 0x08000000
+verifybin /home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/docs/validation/2026-09-14/firmware-update/hil/xcan_factory_0.1.0_clean.bin 0x08000000
+r
+g
+exit

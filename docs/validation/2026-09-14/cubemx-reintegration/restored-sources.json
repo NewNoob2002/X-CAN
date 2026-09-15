@@ -1,0 +1,46 @@
+{
+  "firmware/src/app.c": {
+    "sha256": "b064beaa7309808be2be97266d3ee46dec3403cffd1034a72fe40f2a022c978c",
+    "archived_match": true
+  },
+  "firmware/src/app.h": {
+    "sha256": "914ca7d5ddc5c26ab14d43ccbb32a9f78d82e80f38e8aef336f13d0da55f58c1",
+    "archived_match": true
+  },
+  "firmware/src/usb.c": {
+    "sha256": "e6f6db786ac9d3275a350319ffa0aa57268bae44d750288cd09cc0db0c523301",
+    "archived_match": true
+  },
+  "firmware/src/usb_config.h": {
+    "sha256": "794f634ab20600ea12e3a3ae0c3e9663e054425ecc0a29dbe9d3a921368c0edf",
+    "archived_match": true
+  },
+  "firmware/src/msos_bytes.h": {
+    "sha256": "06a428d804833b5677d6d4b445d993af093cb927e73db19225614142387260d6",
+    "archived_match": true
+  },
+  "firmware/src/protocol.c": {
+    "sha256": "93ddb15f5f3524e4df86833e2c4c317074644fbd509466d5ed705ea343a0a79f",
+    "archived_match": true
+  },
+  "firmware/src/protocol.h": {
+    "sha256": "947606de45b0ab58a09e888703d90bc963e14b31e49e749b1c1c7ba65a9a4233",
+    "archived_match": true
+  },
+  "Core/Src/early_reset.S": {
+    "sha256": "046504078d2ed43eb9b057d3d038aea223e6367b819c7e9b46d4326571524821",
+    "archived_match": true
+  },
+  "Core/Inc/FreeRTOSConfig.h": {
+    "sha256": "377c9ef29506517c2b11dcd5df37129387f9b887b7d2c53fb16f830af3846aaf",
+    "archived_match": true
+  },
+  "Core/Inc/xcan_board.h": {
+    "sha256": "100385b8554ca3654dc3628e29f35dd07a0bcc19385afdf9dd082c8297757530",
+    "archived_match": true
+  },
+  "Core/Src/xcan_board.c": {
+    "sha256": "57e5a073f672f34c84df6b74bb7f03da55e084fefd157c9edb278ced14560e8a",
+    "archived_match": false
+  }
+}

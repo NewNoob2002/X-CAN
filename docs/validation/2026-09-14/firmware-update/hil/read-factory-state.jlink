@@ -1,0 +1,8 @@
+connect
+halt
+regs
+mem32 0x08000000 8
+mem32 0x08006000 8
+mem32 0x0801F800 8
+go
+exit

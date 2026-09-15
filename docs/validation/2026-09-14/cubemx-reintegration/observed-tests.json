@@ -1,0 +1,37 @@
+{
+  "usb_self_test": {
+    "command": "host/target/debug/xcan self-test 2036365058315010002D0055",
+    "exit_code": 0,
+    "stdout": "PASS: 106 echoes (0..52 bytes, whole/split writes), malformed length rejected"
+  },
+  "msos": {
+    "command": "/home/gtc/zephyrproject/.venv/bin/python docs/validation/2026-09-14/hil/check_msos.py",
+    "result": "PASS",
+    "lengths": [
+      162,
+      1,
+      10,
+      64,
+      255
+    ],
+    "invalid_requests_stalled": 2,
+    "recovery_reads": 2
+  },
+  "term_high": {
+    "command": "host/target/debug/xcan info 2036365058315010002D0055",
+    "stdout": "clock_hz=144000000 idcode=20036468 uptime_ms=358528 termination_declared=1 safe=1",
+    "uart": "term-high-uart.log"
+  },
+  "local": {
+    "command": "python3 tools/test.py",
+    "result": "PASS",
+    "sanitizers": "ASan + UBSan",
+    "usb_chunk_cases": 3392,
+    "v2_shared_vectors": 106,
+    "rust_tests": 10
+  },
+  "term_return_low": {
+    "command": "host/target/debug/xcan info 2036365058315010002D0055",
+    "stdout": "clock_hz=144000000 idcode=20036468 uptime_ms=466483 termination_declared=0 safe=1"
+  }
+}

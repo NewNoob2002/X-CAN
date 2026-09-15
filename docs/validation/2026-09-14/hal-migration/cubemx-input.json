@@ -1,0 +1,18 @@
+{
+  "CMakeLists.txt": "a82b5c117cada3228e2384f90727849cde5dd84f3fcde96e1f23aed081880fe2",
+  "CMakePresets.json": "5cfd04cb98883899a9e70bb39dc70f74ee610b88ae34625dafac65f18f322a94",
+  "STM32G431XX_FLASH.ld": "53fdd77c68ebd8aa086b0a8c13729135b429c54a45ea80d3265831b39cf21582",
+  "startup_stm32g431xx.s": "b4f6198c497dfca9d9d2c90b6a9ce3e69b7c5d8a41aaa837592022fc528c309a",
+  "Core/Src/system_stm32g4xx.c": "1de96c381d922635dabc0836d315d66c99b4e9d4a407fef6ee6f5c4e32b0791a",
+  "Core/Src/stm32g4xx_hal_msp.c": "28fc9f28a998307356ef2e04395108bb80943459482a89bcfae41716c5557f47",
+  "Core/Src/syscalls.c": "03c06c72eafb44b499814cf9234aba57dd830f345d9b8779b5d7090e78517600",
+  "Core/Src/stm32g4xx_it.c": "7338739eb432f959a325538d6d6b281d06953f9ed87b04ebeed1274f250ca8ae",
+  "Core/Src/sysmem.c": "ad20f7b1fa1e7c73330727747222cf2ffa3245ebf035230ee9a157545e79df95",
+  "Core/Src/main.c": "fb5bbbdebf6d2abb83e211d459575c7562e7d9bc3ae951fc4c136714debb55b0",
+  "Core/Inc/main.h": "8a6081bde85f3395688c25739d983de7aa432ba5f560dde042824ad12b5916c1",
+  "Core/Inc/stm32g4xx_it.h": "85e40c10dd9924c56e982329592230a245a165b1fa09f91c9b6617f68913e682",
+  "Core/Inc/stm32g4xx_hal_conf.h": "e18048de6e4440cf3869569c1483c52f0cc06f25dccb621692cf3de30dee47a8",
+  "cmake/starm-clang.cmake": "ba006a0dd7746909db27b397a164faa9ada50e09acd8ff8e866d01fa5d2708ff",
+  "cmake/gcc-arm-none-eabi.cmake": "9075fd3ef9a032a4a25df3c8e82122a672832fb4e01a93e4806f49c3be5e0388",
+  "cmake/stm32cubemx/CMakeLists.txt": "232bd6d082d8cf9d111bc1519cd0f6d2e4c14ad03d185ec3f4a424dcbbea978b"
+}

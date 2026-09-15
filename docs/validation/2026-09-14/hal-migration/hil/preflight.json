@@ -1,0 +1,20 @@
+{
+  "authorization": "User requested HAL HIL",
+  "target": "STM32G431RB X-CAN",
+  "probe": "63728769",
+  "interface": "SWD 1000 kHz",
+  "serial": "2036365058315010002D0055",
+  "uart": "ttyUSB0 115200 8N1 receive-only",
+  "artifact": "/home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/Release/xcan.bin",
+  "sha256": "4313da12d3bfea87d2bfb4ca5b999df3a08fcab42549b201bd0c806499f933a8",
+  "load_address": "0x08000000",
+  "bytes": 23040,
+  "backup_range": "0x08000000..0x0801ffff",
+  "power": "Prior user 3.31V/5.14V; confirm VTref",
+  "CAN": "disconnected per session; no CAN or injection code in image",
+  "NRST": "connected per user",
+  "option_bytes": "read only; no boot change",
+  "recovery": "full pre-flash backup and previous verified LL/Zephyr images",
+  "bounds": "backup, flash/verify, bounded UART/USB tests, runtime register/tick inspection; no physical CAN",
+  "ioc": "present but legacy 170MHz model; do not regenerate"
+}

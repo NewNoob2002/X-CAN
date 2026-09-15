@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "timestamp_utc": "2026-09-14T10:34:53Z",
+  "authorization": "User explicitly requested real-hardware validation of frozen MCUboot, App USB updater, Rust host updater, confirm and rollback",
+  "approved": true,
+  "target": {
+    "board": "X-CAN STM32G431RB",
+    "probe_serial": "63728769",
+    "usb_serial": "2036365058315010002D0055",
+    "usb_id": "c0ca:0313",
+    "idcode": "0x20036468",
+    "option_bytes": "0xFBEFF8AA",
+    "vtref": "3.407 V",
+    "transport": "SWD 1000 kHz; USB Vendor Bulk; receive-only UART /dev/ttyUSB0 115200 8N1"
+  },
+  "operations": [
+    "read and back up complete 128 KiB internal Flash",
+    "program and verify 0x08000000..0x0801F7FF with clean 0.1.0 factory baseline",
+    "reset/run",
+    "USB firmware update to signed 0.1.1 and verify confirmed persistence",
+    "USB firmware update to signed 0.1.2 test image and reset before its 10 second confirmation window",
+    "verify MCUboot revert to confirmed 0.1.1",
+    "compare product-data page before and after"
+  ],
+  "artifacts": {
+    "factory_0_1_0": {"path": "docs/validation/2026-09-14/firmware-update/hil/xcan_factory_0.1.0_clean.bin", "address": "0x08000000", "bytes": 129024, "sha256": "a81acb430190512286919f57157454e0ea0b8185541046a7dd006d7a83a84312"},
+    "update_0_1_1": {"path": "build/hil-0.1.1/xcan.signed.bin", "secondary_image_address": "0x08013000", "bytes": 35630, "sha256": "c1037f4b43c150d80c8b087f4670e0ae9671cfc2c0a772821292fd76daa3de57"},
+    "revert_candidate_0_1_2": {"path": "build/hil-0.1.2-revert/xcan.signed.bin", "secondary_image_address": "0x08013000", "bytes": 35636, "sha256": "926dcca508288b6acdbc4cf46c7a1d82f10f22e00cd588079a340018ec23d67b", "confirm_delay_ms": 10000}
+  },
+  "limits": "One board and one probe only. Full Flash is backed up before overwrite. Factory programming ends at 0x0801F7FF and excludes product data at 0x0801F800..0x0801FFFF. USB updater may erase/write only Secondary 0x08012800..0x0801F7FF. No option-byte, protection, CAN, injection, or arbitrary memory writes. No automatic retry after unknown write/finish/reboot outcome. UART captures are bounded to 20 seconds.",
+  "recovery_plan": "Restore the complete pre-test 128 KiB backup at 0x08000000 with verify, or reprogram the clean 0.1.0 factory image while preserving the saved product-data page. Stop on identity, voltage, verify, USB, signature, or cleanup error. Final requested state is running confirmed 0.1.1 after proving 0.1.2 revert."
+}

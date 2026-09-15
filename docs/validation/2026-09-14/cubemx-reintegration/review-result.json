@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "scope": [
+    "Core/Src/main.c USER CODE integration",
+    "Core/Src/xcan_board.c",
+    "firmware/src/app.c",
+    "firmware/src/usb.c",
+    "firmware/src/interrupts.c",
+    "firmware/src/sysmem.c",
+    "CMakeLists.txt and tools/check_build.py"
+  ],
+  "findings": [],
+  "verification": [
+    "startup executes SRAM hook before stores",
+    "early safe latch writes before output mode",
+    "one UART handle and one USB controller owner",
+    "USB IRQ6 masked by FreeRTOS priority5 critical section; no IRQ4 RTOS API calls",
+    "static task allocation and bounded libc heap",
+    "existing real-core USB and protocol sanitizer tests",
+    "Release/Debug symbol/vector checks",
+    "runtime GPIO/clock/priority/fault readback"
+  ],
+  "limits": [
+    "No formal verification or exhaustive concurrency proof",
+    "No oscilloscope or external CAN stimulus",
+    "Task stack high-water not measured"
+  ]
+}

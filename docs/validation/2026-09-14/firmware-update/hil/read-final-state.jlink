@@ -1,0 +1,10 @@
+connect
+halt
+regs
+mem32 0x08006000 8
+mem32 0x080127C0 16
+mem32 0x08013000 8
+mem32 0x0801F7C0 16
+savebin /home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/docs/validation/2026-09-14/firmware-update/hil/product-data-after.bin 0x0801F800 0x800
+go
+exit

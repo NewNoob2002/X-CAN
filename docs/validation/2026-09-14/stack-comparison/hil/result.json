@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-14",
+  "result": "PASS_M1_FEASIBILITY_WITH_LIMITS",
+  "target": "STM32G431RB",
+  "probe": "63728769",
+  "usb_serial": "2036365058315010002D0055",
+  "flash_bytes": 15932,
+  "ram_allocated_bytes": 8024,
+  "artifacts": {
+    "xcan.bin": "5c11f9e61b5632c4704de7df28a84ba7ddbd41c3e24c9c3e13c8586df1833cf6",
+    "xcan.elf": "1f92d344b1e3aec084eaaea9459245e07aedb856b9163a05d75eb81ea449ccec",
+    "xcan.hex": "8264fdafd7cce468635120ecabef02c53f6a037e277958b10d05bf44e55e5ebf",
+    "xcan.map": "087d8889c371eca3840f6c16ff21de745c0141f89f9fab47902f2ef402ab502a"
+  },
+  "main_source_sha256": "9ca218c184def4e9003cfcb4367c0c6e55e4ca674db4b91d59b4a66a66588fd3",
+  "backup": {
+    "bytes": 131072,
+    "sha256": "e319daf48bb1f3ca8778d42314c59359d6fa3f3ae6e0cd172c7f1ecbd6e790fc",
+    "prefix_matches_validated_zephyr": true,
+    "idcode": "20036468",
+    "optr": "FBEFF8AA",
+    "VTref": 3.414
+  },
+  "checks": {
+    "flash_verify": true,
+    "clean_boot": true,
+    "usb_echo_cases_fixed": 106,
+    "msos": true,
+    "gpio_registers_safe": true,
+    "CFSR": 0,
+    "HFSR": 0,
+    "debug_breakpoint_comparators_cleared": true,
+    "option_bytes_unchanged": "FBEFF8AA",
+    "clock_registers": "HSE12 PLL M3 N72 R2 Q6 SYS144 USB48",
+    "switch_evidence": "initial revision 0 then 1; user opened; fixed revision 0",
+    "debug_access_fixed": true
+  },
+  "fix": "Preserve FLASH_ACR DBG_SWEN in latency/cache update",
+  "final_state": "running corrected FreeRTOS/CherryUSB image; STB=1 ARM=0 injection=0 TXD=1; CAN inactive",
+  "pending": [
+    "Windows hardware",
+    "scope/electrical measurements",
+    "cold power cycle and long stress",
+    "runtime stack watermarks",
+    "FDCAN/v2/injection",
+    "bootloader/upgrade layout"
+  ],
+  "next_architecture": "User will generate CubeMX HAL project; HAL primary, LL only timing-sensitive paths"
+}

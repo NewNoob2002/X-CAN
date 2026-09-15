@@ -3,3 +3,8 @@ build/
 host/target/
 .serena/
 __pycache__/
+firmware/keys/*.pem
+# Keep board Flash backups local; retain hashes and logs in validation records.
+docs/validation/**/pre-flash.bin
+docs/validation/**/pre-test-flash.bin
+docs/validation/**/product-data-*.bin

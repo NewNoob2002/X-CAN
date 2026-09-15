@@ -1,5 +1,5 @@
 {
   "clangd.arguments": [
-    "--query-driver=/home/gtc/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-*"
+    "--query-driver=/opt/st/stm32cubeclt_*/GNU-tools-for-STM32/bin/arm-none-eabi-*"
   ]
 }

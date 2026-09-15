@@ -1,0 +1,161 @@
+{
+  "preserved": [
+    {
+      "from": "firmware/can.conf",
+      "to": "legacy/zephyr/firmware/can.conf",
+      "sha256": "b81ab8c7743eea4e46052e257b82c2c1865b45cee4561cef0390efd84fd4e241"
+    },
+    {
+      "from": "firmware/can.overlay",
+      "to": "legacy/zephyr/firmware/can.overlay",
+      "sha256": "9cb2a0087f0d935f3c45577ef98c9361adcbde015898cb59fb824d44e90b9218"
+    },
+    {
+      "from": "firmware/usb.conf",
+      "to": "legacy/zephyr/firmware/usb.conf",
+      "sha256": "54ed786fd92ec9be4a874a900bc51fab5fbc414ad4dd1f71426685f4865d3f26"
+    },
+    {
+      "from": "firmware/mcan.cmake",
+      "to": "legacy/zephyr/firmware/mcan.cmake",
+      "sha256": "f47d0599605f4e79c61170c06267a218e05ee726d575d4bc9f09ba4d0ee0f2c4"
+    },
+    {
+      "from": "firmware/Kconfig",
+      "to": "legacy/zephyr/firmware/Kconfig",
+      "sha256": "a0ad4f7be31c290a551bcf7c636919bff4003f329f14a3a724fb6f99ab800cf2"
+    },
+    {
+      "from": "firmware/usb.overlay",
+      "to": "legacy/zephyr/firmware/usb.overlay",
+      "sha256": "16378196fd218bb8a57454f2e3eaca1ffc17237323781e6fb8c1c7450c2cd4e7"
+    },
+    {
+      "from": "firmware/prj.conf",
+      "to": "legacy/zephyr/firmware/prj.conf",
+      "sha256": "2d21e89eec6ce57e01532d7d81626b4694272b133d7daf96ccccdd185785ce04"
+    },
+    {
+      "from": "firmware/src/protocol.c",
+      "to": "firmware/src/protocol.c",
+      "sha256": "93ddb15f5f3524e4df86833e2c4c317074644fbd509466d5ed705ea343a0a79f"
+    },
+    {
+      "from": "firmware/src/can_app.c",
+      "to": "legacy/zephyr/firmware/src/can_app.c",
+      "sha256": "2491fd2438f8d4a18b449a83412b673912219b017016aa17816eb3888752e42d"
+    },
+    {
+      "from": "firmware/src/can_port.c",
+      "to": "legacy/zephyr/firmware/src/can_port.c",
+      "sha256": "ce33665bf13395adf188f249a873d48e8fdf5b506685c1245f45a925f4c50261"
+    },
+    {
+      "from": "firmware/src/protocol_v2.h",
+      "to": "firmware/src/protocol_v2.h",
+      "sha256": "832a6dd5ceed983e63e934b0a742aef75df7bf447f9a5227819fea89a0c0fb09"
+    },
+    {
+      "from": "firmware/src/can_app.h",
+      "to": "legacy/zephyr/firmware/src/can_app.h",
+      "sha256": "61743a6832c4c250bd95537d662ab24131e9b1c9a038b954e03355f2ca342b66"
+    },
+    {
+      "from": "firmware/src/usb.c",
+      "to": "legacy/zephyr/firmware/src/usb.c",
+      "sha256": "f25c50cd2176a86785070a8a3c2e43665fbeb0846e122e3ef6f8e5c237bfde5b"
+    },
+    {
+      "from": "firmware/src/can_port.h",
+      "to": "legacy/zephyr/firmware/src/can_port.h",
+      "sha256": "4498a1e3e1382358cfda5a74360a8f3f865a1780eb344871568c999c9a17c2ac"
+    },
+    {
+      "from": "firmware/src/protocol_v2.c",
+      "to": "firmware/src/protocol_v2.c",
+      "sha256": "87c354820ffdef8946f563fb5467c0d1b514edde6fd45ffc95f8ef5a16d3a786"
+    },
+    {
+      "from": "firmware/src/main.c",
+      "to": "legacy/zephyr/firmware/src/main.c",
+      "sha256": "8ffc76561475ec9e581426fe4727d318e59b571fdf769a92c9ea5fc0f247f98a"
+    },
+    {
+      "from": "firmware/src/msos.h",
+      "to": "legacy/zephyr/firmware/src/msos.h",
+      "sha256": "80ecd17bc5cc3fdba841501d74b5f1efb73cd75b02c4876a2350610fab47201a"
+    },
+    {
+      "from": "firmware/src/protocol.h",
+      "to": "firmware/src/protocol.h",
+      "sha256": "947606de45b0ab58a09e888703d90bc963e14b31e49e749b1c1c7ba65a9a4233"
+    },
+    {
+      "from": "boards/xcan/xcan_g431/board.yml",
+      "to": "legacy/zephyr/boards/xcan/xcan_g431/board.yml",
+      "sha256": "8548b645c94ccce4207d6fe8a0a33fa5d0f75e4dbfeec37be21ce2e58241ef76"
+    },
+    {
+      "from": "boards/xcan/xcan_g431/Kconfig.xcan_g431",
+      "to": "legacy/zephyr/boards/xcan/xcan_g431/Kconfig.xcan_g431",
+      "sha256": "6381d47efbd93eb16356cc4202e83dbb45be3bc4c5ca971bb11edd652cf1a5b9"
+    },
+    {
+      "from": "boards/xcan/xcan_g431/board.cmake",
+      "to": "legacy/zephyr/boards/xcan/xcan_g431/board.cmake",
+      "sha256": "4409d323ce763f2dd0eb2b3ac8a755f79c5ae9aeb33f2ca351fabe771fb4148a"
+    },
+    {
+      "from": "boards/xcan/xcan_g431/xcan_g431_defconfig",
+      "to": "legacy/zephyr/boards/xcan/xcan_g431/xcan_g431_defconfig",
+      "sha256": "a435729781d76fe3d6a444d034e788b7b73d84991fa8d5c2889d77cb75964f2d"
+    },
+    {
+      "from": "boards/xcan/xcan_g431/xcan_g431.dts",
+      "to": "legacy/zephyr/boards/xcan/xcan_g431/xcan_g431.dts",
+      "sha256": "76241624ab3c64de093ba7bc0b9a7a818f55bd0af7f900b1241312457fe55ece"
+    },
+    {
+      "from": "west.yml",
+      "to": "legacy/zephyr/west.yml",
+      "sha256": "4a14b934cc438f113c50fc9e3366bb45212feeb02054b5edf702e6cbcc9ab26c"
+    },
+    {
+      "from": "tools/patch_mcan.py",
+      "to": "legacy/zephyr/tools/patch_mcan.py",
+      "sha256": "1a342743c903025f7bee0a0b0b42b753ab1bc00f3d217d392b0d3ff9dbc7ea29"
+    },
+    {
+      "from": "tools/check_build.py",
+      "to": "legacy/zephyr/tools/check_build.py",
+      "sha256": "a8d96176257d7b155f598bda64d1867c9e8608e870f1de8ed41570a2be0b1652"
+    },
+    {
+      "from": "README.md",
+      "to": "legacy/zephyr/README.original.md",
+      "sha256": "16e93e49a4f74f84e8e20a0dfa914665c9d96662bbf44c4e473128347a201dff"
+    }
+  ],
+  "adapted_for_shared_paths_or_assembler_type": [
+    {
+      "from": "firmware/CMakeLists.txt",
+      "to": "legacy/zephyr/firmware/CMakeLists.txt",
+      "sha256": "79404f222571e5174ff51a9a48363b7a3cb5981565a03ab2aac96dc90b6b1214"
+    },
+    {
+      "from": "boards/xcan/xcan_g431/early_reset.S",
+      "to": "Core/Src/early_reset.S",
+      "sha256": "046504078d2ed43eb9b057d3d038aea223e6367b819c7e9b46d4326571524821"
+    },
+    {
+      "from": "boards/xcan/xcan_g431/CMakeLists.txt",
+      "to": "legacy/zephyr/boards/xcan/xcan_g431/CMakeLists.txt",
+      "sha256": "61292a1490f8af9195a2205322caaa7d7e6aa318ab3ea0940e18558226382b5c"
+    },
+    {
+      "from": "tools/build.py",
+      "to": "legacy/zephyr/tools/build.py",
+      "sha256": "36e1f15abc4e0e0f2a036fd6b2efaf5ef8170fe26234ae4371ec9f073b3c175f"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+connect
+h
+SetBP 0x080005bc
+g
+sleep 50
+h
+regs
+mem32 0x48000000 7
+ClrBP 0
+g
+exit

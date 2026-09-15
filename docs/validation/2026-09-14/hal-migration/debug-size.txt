@@ -1,0 +1,30 @@
+/home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/Debug/xcan.elf  :
+section                size        addr
+.isr_vector             472   134217728
+.text                 25524   134218208
+.rodata                 744   134243732
+.ARM.extab                0   134244476
+.ARM                      8   134244476
+.preinit_array            0   134244484
+.init_array               4   134244484
+.fini_array               4   134244488
+.data                   144   536870912
+.tdata                    0   536871056
+.tbss                     0   536871056
+.bss                   6508   536871056
+._user_heap_stack      3076   536877564
+.ARM.attributes          48           0
+.comment                 67           0
+.debug_info          148931           0
+.debug_abbrev         23097           0
+.debug_loclists       72318           0
+.debug_aranges         6088           0
+.debug_rnglists        5038           0
+.debug_macro         143658           0
+.debug_line          130948           0
+.debug_str           928897           0
+.debug_frame          14944           0
+.debug_line_str         423           0
+Total               1510941
+
+

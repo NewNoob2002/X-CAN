@@ -1,0 +1,97 @@
+{
+  "date": "2026-09-14",
+  "scope": "host-only protocol v2; no USB/CAN/HIL or firmware deployment",
+  "tests": [
+    {
+      "name": "c-v2-build",
+      "command": [
+        "cc",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-fsanitize=address,undefined",
+        "-Ifirmware/src",
+        "tests/protocol_v2_test.c",
+        "firmware/src/protocol_v2.c",
+        "-o",
+        "build/protocol-v2-test"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "c-v2",
+      "command": [
+        "build/protocol-v2-test",
+        "tests/protocol_v2_vectors.txt"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "c-v1-build",
+      "command": [
+        "cc",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-fsanitize=address,undefined",
+        "-Ifirmware/src",
+        "tests/protocol_test.c",
+        "firmware/src/protocol.c",
+        "-o",
+        "build/protocol-test"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "c-v1",
+      "command": [
+        "build/protocol-test"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "rust-tests",
+      "command": [
+        "cargo",
+        "test",
+        "--manifest-path",
+        "host/Cargo.toml",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "clippy",
+      "command": [
+        "cargo",
+        "clippy",
+        "--manifest-path",
+        "host/Cargo.toml",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "sources": {
+    "firmware/src/protocol_v2.h": "832a6dd5ceed983e63e934b0a742aef75df7bf447f9a5227819fea89a0c0fb09",
+    "firmware/src/protocol_v2.c": "87c354820ffdef8946f563fb5467c0d1b514edde6fd45ffc95f8ef5a16d3a786",
+    "host/src/protocol_v2.rs": "08de59974667d26775ae1e625923d512576f500ae7e37db3fa7e287750cf3c1c",
+    "host/tests/protocol_v2.rs": "fab4871aef484159e349b10dec5040e3503a2dbbcaf4ad8a9f733d7aceb00161",
+    "tests/protocol_v2_test.c": "64914321c76e77c68716e9dae8ed41ecf772c08cbe499ecf427c9209f37fa57e",
+    "tests/protocol_v2_vectors.txt": "1d5eb0e7db1369c2d16253a442b01fb6199c59ef1757e9bd0cb28823e9470bce"
+  },
+  "vectors": 106,
+  "rustc": "rustc 1.98.0 (88d9e12ae 2026-08-18)",
+  "cc": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "rust_v2_tests": 9,
+  "rust_v1_tests": 1,
+  "review": "C/Rust bounded length, checked DLC and IDs, no packed/unaligned accesses; fail-latched parser; request/TX/event correlation reviewed. No device integration reviewed."
+}

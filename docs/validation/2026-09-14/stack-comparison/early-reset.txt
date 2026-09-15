@@ -1,0 +1,21 @@
+
+/home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/comparison/freertos_cherryusb/xcan.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+08000b18 <soc_early_reset_hook>:
+ 8000b18:	4808      	ldr	r0, [pc, #32]	@ (8000b3c <xcan_sram_parity_unsupported+0x6>)
+ 8000b1a:	6801      	ldr	r1, [r0, #0]
+ 8000b1c:	f011 7f80 	tst.w	r1, #16777216	@ 0x1000000
+ 8000b20:	f000 8009 	beq.w	8000b36 <xcan_sram_parity_unsupported>
+ 8000b24:	f04f 5000 	mov.w	r0, #536870912	@ 0x20000000
+ 8000b28:	6801      	ldr	r1, [r0, #0]
+ 8000b2a:	4805      	ldr	r0, [pc, #20]	@ (8000b40 <xcan_sram_parity_unsupported+0xa>)
+ 8000b2c:	6801      	ldr	r1, [r0, #0]
+ 8000b2e:	f04f 5080 	mov.w	r0, #268435456	@ 0x10000000
+ 8000b32:	6801      	ldr	r1, [r0, #0]
+ 8000b34:	4770      	bx	lr
+
+08000b36 <xcan_sram_parity_unsupported>:
+ 8000b36:	f7ff bffe 	b.w	8000b36 <xcan_sram_parity_unsupported>

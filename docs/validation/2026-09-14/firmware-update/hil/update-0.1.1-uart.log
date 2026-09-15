@@ -1,0 +1,19 @@
+alive ms=7041 hal_ms=7042 termination_declared=0 SAFE
+alive ms=8alive ms=127548 hal_ms=127552 termination_declared=0 SAFE
+alive ms=128553 hal_ms=128557 termination_declared=0 SAFE
+alive ms=129558 hal_ms=129562 termination_declared=0 SAFE
+alive ms=130563 hal_ms=130567 termination_declared=0 SAFE
+alive ms=131568 hal_ms=131572 termination_declared=0 SAFE
+alive ms=132573 hal_ms=132577 termination_declared=0 SAFE
+alive ms=133578 hal_ms=133582 termination_declared=0 SAFE
+alive ms=134583 hal_ms=134587 termination_declared=0 SAFE
+alive ms=135588 hal_ms=135592 termination_declared=0 SAFE
+alive ms=136590 hal_ms=136595 termination_declared=0 SAFE
+X-CAN HAL+FreeRTOS sysclk=144000000 idcode=20036468 optr=fbeff8aa SAFE
+USB init=0 vid=c0ca pid=0313
+alive ms=8 hal_ms=10 termination_declared=-1 SAFE
+termination_declared=0 (manual switch)
+MCUboot confirm=0
+alive ms=1017 hal_ms=1018 termination_declared=0 SAFE
+alive ms=2021 hal_ms=2022 termination_declared=0 SAFE
+alive ms=3025 hal_ms=3026 termination_declared=0 SAFE

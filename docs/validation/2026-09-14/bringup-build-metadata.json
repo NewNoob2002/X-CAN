@@ -1,0 +1,32 @@
+{
+  "build": "/home/gtc/Desktop/workspace/STM32_PROJ/X-CAN/build/system/bringup",
+  "checks": "startup hook first, no stores in hook, Flash vectors, no CAN",
+  "artifacts": {
+    "zephyr.elf": {
+      "bytes": 596768,
+      "sha256": "d52403ed7b324b8327e9b3521f6e3f914bd06724cc340961a694962e2d519109"
+    },
+    "zephyr.bin": {
+      "bytes": 30480,
+      "sha256": "b7599b87bec77641f5709e3af90916ab1dbf829e1a7ccb4a9d1ef0c7678b472e"
+    },
+    "zephyr.hex": {
+      "bytes": 85841,
+      "sha256": "f54301e33a3be5c477ad5e25a4af85be0ced9c14a79224f2387b0ffe4bb7400f"
+    },
+    "zephyr.map": {
+      "bytes": 349526,
+      "sha256": "5a79b98005f70dd9942d66c1f57595c8dfa4aa50ab1aeb626e5244c7b999e0ad"
+    },
+    ".config": {
+      "bytes": 37277,
+      "sha256": "22ffab0a24078064c1d863c07d5800c240a132a8ea84f6c2ed72c4d90d057edf"
+    },
+    "zephyr.dts": {
+      "bytes": 73483,
+      "sha256": "a44df3c22424e258d6237af15109a47db4202a36b19d9caec6b8774e59960218"
+    }
+  },
+  "initial_sp": "0x20001580",
+  "reset_vector": "0x80010b5"
+}

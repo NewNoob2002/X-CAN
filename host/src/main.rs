@@ -1,8 +1,10 @@
 use rusb::{DeviceHandle, GlobalContext};
 use std::{
     error::Error,
+    fs, thread,
     time::{Duration, Instant},
 };
+use xcan::{firmware_update, protocol_v2};
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
 const VID: u16 = 0xc0ca;
 const PID: u16 = 0x0313;
@@ -76,6 +78,141 @@ impl Link {
         self.handle.release_interface(self.interface)?;
         Ok(())
     }
+    fn v2_version(&self) -> Result<()> {
+        let mut version = [0u8; 8];
+        let n = self
+            .handle
+            .read_control(0xc0, 3, 0, 0, &mut version, TIMEOUT)?;
+        if n != version.len()
+            || version[..6] != *b"XCAN\x02\x00"
+            || u16::from_le_bytes(version[6..8].try_into().unwrap()) as usize
+                != protocol_v2::MAX_MESSAGE
+        {
+            return Err("device does not expose X-CAN protocol v2/544".into());
+        }
+        Ok(())
+    }
+    fn exchange_v2(&self, message: &protocol_v2::Message) -> Result<protocol_v2::Message> {
+        let wire = message.encode().map_err(|_| "invalid v2 request")?;
+        let deadline = Instant::now() + TIMEOUT;
+        for part in wire.chunks(64) {
+            let timeout = deadline
+                .checked_duration_since(Instant::now())
+                .ok_or("USB deadline")?;
+            if self.handle.write_bulk(self.ep_out, part, timeout)? != part.len() {
+                return Err("short USB write; operation result is unknown".into());
+            }
+        }
+        let mut decoder = protocol_v2::Decoder::default();
+        let mut packet = [0u8; 64];
+        loop {
+            let timeout = deadline
+                .checked_duration_since(Instant::now())
+                .ok_or("USB deadline")?;
+            let n = self.handle.read_bulk(self.ep_in, &mut packet, timeout)?;
+            let mut offset = 0;
+            while offset < n {
+                let (used, response) = decoder
+                    .feed(&packet[offset..n])
+                    .map_err(|_| "invalid v2 response")?;
+                offset += used;
+                if let Some(response) = response {
+                    return Ok(response);
+                }
+            }
+        }
+    }
+}
+
+fn v2_response(
+    link: &Link,
+    session: &mut protocol_v2::ClientSession,
+    opcode: u16,
+    payload: Vec<u8>,
+) -> Result<protocol_v2::Message> {
+    let request = session
+        .request(opcode, payload)
+        .map_err(|_| "invalid v2 request state")?;
+    let response = link.exchange_v2(&request)?;
+    session
+        .receive(&response)
+        .map_err(|_| "uncorrelated v2 response")?;
+    Ok(response)
+}
+
+fn v2_request(
+    link: &Link,
+    session: &mut protocol_v2::ClientSession,
+    opcode: u16,
+    payload: Vec<u8>,
+) -> Result<protocol_v2::Message> {
+    let response = v2_response(link, session, opcode, payload)?;
+    if response.status != 0 {
+        return Err(format!(
+            "device status {} for opcode 0x{opcode:04x}",
+            response.status
+        )
+        .into());
+    }
+    Ok(response)
+}
+
+fn update(link: &Link, path: &str) -> Result<()> {
+    link.v2_version()?;
+    let image = fs::read(path)?;
+    let begin = firmware_update::begin_payload(&image)?;
+    let mut session = protocol_v2::ClientSession::default();
+    let hello = v2_request(link, &mut session, protocol_v2::HELLO, vec![])?;
+    let capabilities = u32::from_le_bytes(hello.payload[..4].try_into().unwrap());
+    if capabilities & (1 << 4) == 0 {
+        return Err("device does not support firmware update".into());
+    }
+    for attempt in 0..20 {
+        let response = v2_response(link, &mut session, protocol_v2::FW_BEGIN, begin.clone())?;
+        if response.status == 0 {
+            break;
+        }
+        if response.status != 4 || attempt == 19 {
+            return Err(format!("device status {} for FW_BEGIN", response.status).into());
+        }
+        thread::sleep(Duration::from_millis(100));
+    }
+
+    let next_offset = loop {
+        let response = v2_request(link, &mut session, protocol_v2::FW_STATUS, vec![])?;
+        let status = firmware_update::parse_status(&response.payload)?;
+        if status.state == 5 {
+            return Err(format!("erase failed: {}", status.error).into());
+        }
+        if status.state == 2 || status.state == 3 {
+            break status.next_offset as usize;
+        }
+        if status.state != 1 {
+            return Err(format!("unexpected update state {}", status.state).into());
+        }
+    };
+    if next_offset > image.len()
+        || (next_offset != image.len() && next_offset % firmware_update::CHUNK_SIZE != 0)
+    {
+        return Err("device resume offset is invalid".into());
+    }
+    for (index, chunk) in image.chunks(firmware_update::CHUNK_SIZE).enumerate() {
+        let offset = index * firmware_update::CHUNK_SIZE;
+        if offset < next_offset {
+            continue;
+        }
+        v2_request(
+            link,
+            &mut session,
+            protocol_v2::FW_WRITE,
+            firmware_update::write_payload(offset, chunk)?,
+        )?;
+        println!("write {}/{}", offset + chunk.len(), image.len());
+    }
+    v2_request(link, &mut session, protocol_v2::FW_FINISH, vec![])?;
+    println!("verified and marked pending; rebooting");
+    v2_request(link, &mut session, protocol_v2::FW_REBOOT, vec![])?;
+    Ok(())
 }
 
 fn open(serial: &str) -> Result<Link> {
@@ -181,9 +318,10 @@ fn run_command(link: &Link, command: &str, args: &[String]) -> Result<()> {
                 "PASS: 106 echoes (0..52 bytes, whole/split writes), malformed length rejected"
             );
         }
+        "update" if args.len() == 1 => update(link, &args[0])?,
         _ => {
             return Err(
-                "usage: xcan list | info SERIAL | echo SERIAL TEXT | self-test SERIAL".into(),
+                "usage: xcan list | info SERIAL | echo SERIAL TEXT | self-test SERIAL | update SERIAL xcan.signed.bin".into(),
             )
         }
     }
@@ -207,7 +345,7 @@ fn run() -> Result<()> {
         return Ok(());
     }
     if args.len() < 2 {
-        return Err("usage: xcan list | info SERIAL | echo SERIAL TEXT | self-test SERIAL".into());
+        return Err("usage: xcan list | info SERIAL | echo SERIAL TEXT | self-test SERIAL | update SERIAL xcan.signed.bin".into());
     }
     let link = open(&args[1])?;
     let result = run_command(&link, &args[0], &args[2..]);

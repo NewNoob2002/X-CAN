@@ -1,0 +1,6 @@
+{
+  "bytes": 131072,
+  "sha256": "949261938fd0721cadd4b72c1ea43b65b5b2b8556049fa55feda6f825dd83f90",
+  "path": "build/hil-reintegration/preflash.bin",
+  "address": "0x08000000"
+}
